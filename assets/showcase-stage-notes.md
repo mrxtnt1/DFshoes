@@ -1,0 +1,7 @@
+# Showcase background
+
+Asset: assets/showcase-stage.png
+Created with the built-in imagegen tool. Product photographs are supplied originals, unchanged.
+
+Generation prompt:
+Create one polished photorealistic CGI BACKGROUND asset for a footwear product showcase website, square 1024x1024. Empty futuristic dark navy and black studio. A wide circular low black metallic display pedestal dominates the bottom quarter of the image, centered horizontally, viewed slightly from above: elliptical top centered at y=79% of frame, front thick cylindrical side extending to y=91%, pedestal width 88% of image. Top is glossy dark brushed metal with two very thin luminous ice blue concentric rings inset around its edge. Reflective wet dark floor with subtle ripples and blue light reflections at the bottom. Subtle tall cyan light columns out of focus at far left and far right, soft overhead spotlight at top center, light atmospheric haze. The upper 70% is uncluttered near-black navy empty space so an existing separate shoe sole photo can be overlaid there. Elegant cinematic studio lighting, luxurious realistic materials, crisp platform detail, subdued luminous cyan edges matching a futuristic luxury footwear gallery. No shoe, no sole, no product, no logo, no lettering, no text, no buttons or interface, no strong center light obscuring a product. Image must only contain the empty stage and background.

@@ -1,0 +1,25 @@
+/* Keep the model controls inside their copy column in every language. */
+.hero{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);column-gap:clamp(16px,2vw,28px)}
+.hero-copy,.showcase{min-width:0}
+.model-switcher{width:100%;max-width:480px;min-width:0;gap:clamp(4px,.7vw,10px);overflow:hidden}
+.model-switcher>button{flex:0 0 32px}
+.model-list-label{display:flex;align-items:center;gap:6px;flex:1 1 0;min-width:0;white-space:nowrap}
+.model-list-label>span{flex:0 0 auto}
+.model-list-label select{flex:1 1 0;width:100%;min-width:0;max-width:180px;text-overflow:ellipsis}
+.model-counter{flex:0 0 auto;white-space:nowrap}
+
+/* The supplied logo has a black surround; screen blending keeps the artwork clean on the dark header. */
+.site-brand{width:124px;height:70px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.site-brand img{display:block;width:124px;height:70px;max-width:100%;object-fit:contain;mix-blend-mode:screen;filter:none;animation:none}
+
+@media(max-width:800px){.hero{grid-template-columns:minmax(0,1fr);column-gap:0}}
+@media(max-width:520px){
+  .model-switcher{gap:4px;padding:4px}
+  .model-switcher>button{flex-basis:29px;width:29px;height:29px}
+  .model-list-label>span{display:none}
+  .model-list-label select{max-width:none;font-size:13px}
+  .model-counter{font-size:9px}
+  .site-brand,.site-brand img{width:88px;height:56px}
+  .site-brand img{width:88px;height:56px}
+}
+

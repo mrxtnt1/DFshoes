@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#04080d"/>
+  <title>DF Shoes — Sole showroom</title>
+  <link rel="preload" href="assets/df-shoes-logo.glb" as="fetch" type="model/gltf-binary" crossorigin="anonymous" fetchpriority="high"/>
+  <link rel="preload" href="assets/df-shoes-logo-transparent.png" as="image" fetchpriority="high"/>
+  <link rel="modulepreload" href="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js" crossorigin="anonymous"/>
+  <script type="module" src="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="navbar-arabic-fix.css"/>
+    <link rel="stylesheet" href="mobile-fixes.css?v=sole-cutouts-1"/>
+  <script src="app.js?v=category-models-2" defer></script>
+</head>
+<body class="opening-active">
+  <div class="noise" aria-hidden="true"></div>
+  <section class="cinematic-intro" id="intro" aria-labelledby="intro-title">
+    <div class="intro-stage">
+      <div class="intro-sky" aria-hidden="true">
+        <img class="intro-background-photo" src="assets/opening-storm.png" alt=""/>
+        <div class="intro-stars"></div>
+        <div class="intro-cloud intro-cloud-a"></div>
+        <div class="intro-cloud intro-cloud-b"></div>
+        <div class="intro-cloud intro-cloud-c"></div>
+        <div class="intro-horizon"></div>
+      </div>
+      <img class="intro-thunder-motion" src="assets/thunder.gif" alt="" aria-hidden="true"/>
+      <img class="intro-thunder-gif" src="assets/thunder-lightning.png" alt="" aria-hidden="true"/>
+      <div class="intro-copy">
+        <p id="intro-title" data-i18n="introTitle">Crafted in motion</p>
+      </div>
+      <div class="intro-logo-3d" aria-label="DF Shoes">
+        <img class="intro-logo-preview" src="assets/df-shoes-logo-transparent.png" alt="" aria-hidden="true" fetchpriority="high" decoding="sync"/>
+        <model-viewer id="intro-logo-model" src="assets/df-shoes-logo.glb" alt="DF Shoes 3D logo" camera-orbit="0deg 75deg 105%" field-of-view="28deg" exposure="1.15" shadow-intensity="0.8" environment-image="neutral" interaction-prompt="none" disable-pan disable-zoom auto-rotate auto-rotate-delay="0" rotation-per-second="30deg" loading="eager" reveal="auto"></model-viewer>
+      </div>
+      <div class="intro-foot"><span class="intro-rule"></span><span class="intro-scroll" data-i18n="introScroll">SCROLL TO ENTER</span><span class="intro-scroll-arrow" aria-hidden="true">↓</span><span class="intro-rule"></span></div>
+      <a class="intro-skip" href="#product"><span data-i18n="skipIntro">Skip intro</span> <span aria-hidden="true">↘</span></a>
+      <div class="intro-wormhole" aria-hidden="true"><img src="assets/concept4.gif" alt=""/><span></span><i></i><b></b></div>
+      <div class="intro-flare" aria-hidden="true"></div>
+    </div>
+  </section>
+  <header>
+    <a href="#product" class="brand site-brand" aria-label="DF Shoes home"><img src="assets/logo-final-navbar-clean.png" alt="DF Shoes"/></a>
+    <nav aria-label="التنقل الرئيسي">
+      <a href="#product" data-i18n="product">المنتج</a>
+      <a href="#gallery" data-i18n="gallery">المعرض</a>
+      <label class="language-picker"><span aria-hidden="true">◎</span><span class="sr-only" data-i18n="language">اللغة</span>
+        <select id="language" aria-label="اللغة"><option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option></select>
+      </label>
+    </nav>
+  </header>
+  <main>
+    <section class="collection-selector" aria-label="Category navigation">
+      <p class="eyebrow" data-i18n="categoryNavigation">التنقل حسب الفئة</p>
+      <button class="rail-toggle" type="button" aria-expanded="false" aria-controls="category-tabs" aria-label="عرض الفئات">
+        <span aria-hidden="true">+</span>
+        <span class="sr-only" data-i18n="showCategories">عرض الفئات</span>
+      </button>
+      <div class="category-tabs" role="tablist" id="category-tabs" dir="auto">
+        <button type="button" data-category="all" role="tab" aria-label="All categories" aria-pressed="true"><span>All categories</span><small>09</small></button>
+        <button type="button" data-category="homme" role="tab" aria-label="L'homme" aria-pressed="false"><span>L'homme</span><small>05</small></button>
+        <button type="button" data-category="femme" role="tab" aria-label="La Femme" aria-pressed="false"><span>La Femme</span><small>03</small></button>
+        <button type="button" data-category="junior" role="tab" aria-label="30/35" aria-pressed="false"><span>30/35</span><small>01</small></button>
+        <button type="button" data-category="caddie" role="tab" aria-label="Caddie" aria-pressed="false"><span>Caddie</span><small>00</small></button>
+      </div>
+    </section>
+    <section class="hero" id="product">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="collection">مجموعة نعال DF SHOES</p>
+        <div class="model-switcher" role="group" aria-label="اختيار الموديل">
+          <button id="model-prev" type="button" data-label="previousModel">←</button>
+          <label class="model-list-label"><span data-i18n="model">الموديل</span><select id="model-select" aria-label="Model"></select></label><span class="model-counter"><b id="model-counter" dir="ltr">01 / 09</b></span>
+          <button id="model-next" type="button" data-label="nextModel">→</button>
+        </div>
+        <h1 id="model-title" dir="ltr">DF-<span>Malaga</span></h1>
+        <p class="lede" id="model-description"></p>
+        <fieldset id="variant-picker" class="variant-picker" hidden>
+          <legend data-i18n="finish"></legend>
+          <div id="variant-buttons"></div>
+          <p id="variant-note"></p>
+        </fieldset>
+        <div class="specs">
+          <div><b id="size-range" dir="ltr">39–40</b><small data-i18n="sizeRange">المقاسات</small></div>
+          <div><b id="photo-count">04</b><small data-i18n="photoViews">زوايا العرض</small></div>
+          <div><b id="model-count" dir="ltr">09</b><small data-i18n="models">الموديلات</small></div>
+        </div>
+        <p id="model-announcement" class="sr-only" aria-live="polite"></p>
+      </div>
+      <div class="showcase">
+        <div class="viewer-wrap" id="viewer" data-view="interior" data-model="malaga" tabindex="0" role="region" data-label="viewerLabel">
+          <img class="stage-backdrop" src="assets/showcase-stage.png" alt="" aria-hidden="true"/>
+          <div class="stage-glow" aria-hidden="true"></div>
+          <div class="product-float"><img id="hero-product" class="hero-product" src="assets/interior.png" alt="DF-Malaga" draggable="false"/></div>
+          <div class="view-hint"><span data-i18n="swipe">اسحب لتغيير زاوية العرض</span> <span aria-hidden="true">↔</span></div>
+        </div>
+        <section class="controls" data-label="photoControls" aria-label="زوايا العرض">
+          <div class="view-navigation">
+            <button class="arrow" id="prev" data-label="previousView">‹</button>
+            <div class="tabs" id="view-tabs" role="group"></div>
+            <button class="arrow" id="next" data-label="nextView">›</button>
+          </div>
+          <div class="slider-wrap">
+            <label for="angle-slider"><span data-i18n="viewAngle">زاوية العرض</span><output id="angle-value" for="angle-slider"></output></label>
+            <input id="angle-slider" class="angle-slider" type="range" min="0" max="270" step="90" value="0"/>
+            <div class="angle-ticks" aria-hidden="true" id="angle-ticks"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="empty-collection" id="empty-collection" hidden aria-live="polite">
+      <span class="empty-mark" aria-hidden="true">◇</span>
+      <p class="eyebrow" data-i18n="categoryNavigation">التنقل حسب الفئة</p>
+      <h2 id="empty-title">Caddie</h2>
+      <p id="empty-message" data-i18n="emptyCategory">لا توجد موديلات مرتبطة بهذه الفئة حالياً.</p>
+    </section>
+    <section class="gallery" id="gallery">
+      <div class="section-head"><h2 data-i18n="productViews">زوايا المنتج</h2><span id="gallery-counter" dir="ltr">01 — 04</span></div>
+      <div class="cards" id="view-cards"></div>
+      <section class="scroll-story" id="materials" aria-label="دراسة التصميم">
+        <div class="story-pin">
+          <div class="story-ambient" aria-hidden="true"></div>
+          <div class="story-frame">
+            <div class="story-brand"><span aria-hidden="true">◇</span> <b class="story-model" dir="ltr">DF-Malaga</b><span class="story-step" dir="ltr">01 / 03</span></div>
+            <div class="story-copy">
+              <article class="story-chapter" data-chapter="0"><p class="eyebrow" data-i18n="productViews"></p><h2 data-i18n="storyTitle0"></h2><p id="story-body-0"></p><a class="story-link" href="#materials-mid"><span data-i18n="scrollExplore"></span><span aria-hidden="true">↓</span></a></article>
+              <article class="story-chapter" data-chapter="1"><p class="eyebrow" data-i18n="materialStudy"></p><h2 data-i18n="storyTitle1"></h2><p id="story-body-1"></p><dl class="story-specs"><div><dt data-i18n="model"></dt><dd class="story-model" dir="ltr"></dd></div><div><dt data-i18n="sizeRange"></dt><dd class="story-size" dir="ltr"></dd></div></dl></article>
+              <article class="story-chapter" data-chapter="2"><p class="eyebrow" data-i18n="outsole"></p><h2 data-i18n="storyTitle2"></h2><p id="story-body-2"></p><a class="story-link" href="#product"><span data-i18n="backProduct"></span><span aria-hidden="true">↑</span></a></article>
+            </div>
+            <div class="story-visual" aria-hidden="true">
+              <div class="story-image story-primary"><img id="story-primary" alt=""/></div>
+              <div class="story-image story-secondary"><img id="story-secondary" alt=""/></div>
+              <div class="story-image story-tertiary"><img id="story-tertiary" alt=""/></div>
+            </div>
+            <div class="story-progress" aria-hidden="true"><span></span></div>
+          </div>
+        </div>
+        <span class="story-anchor" id="materials-mid" aria-hidden="true"></span>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <span dir="ltr">© DF SHOES 2026</span>
+    <span data-i18n="footer">تصميم النعال من DF SHOES</span>
+    <address class="footer-address">
+      <b data-i18n="reachUs">How to reach us</b>
+      <a href="https://maps.app.goo.gl/GfZ8YpD9p2XuPwD99" target="_blank" rel="noopener" data-i18n="hqAddress">Factory HQ · Médéa, Algeria</a>
+    </address>
+    <a class="whatsapp-link" href="https://wa.me/213559581166" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 3.5A11.7 11.7 0 0 0 12.2 0C5.7 0 .4 5.3.4 11.8c0 2.1.6 4.1 1.6 5.9L.3 24l6.5-1.7a11.8 11.8 0 0 0 5.4 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.1-1.3-6.1-3.6-8.3ZM12.3 21.5h-.1c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-3.9 1 1-3.8-.3-.4a9.8 9.8 0 0 1-1.5-5.1c0-5.4 4.4-9.8 9.9-9.8 2.6 0 5.1 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.3-4.4 9.7-9.7 9.7Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2c-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.5-.7-2.5-1.2-3.5-2.8-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6 0-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.2 3.2c.2.2 2.2 3.4 5.4 4.8.8.3 1.4.5 1.8.6.8.2 1.5.2 2.1.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/></svg>
+    </a>
+    <a href="#product" data-i18n="backTop">العودة إلى الأعلى ↑</a>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
