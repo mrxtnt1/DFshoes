@@ -423,7 +423,7 @@
     if(location.protocol!=='file:' || window.__DF_SHOES_LOGO_DATA__) return Promise.resolve();
     return new Promise(resolve=>{
       const script=document.createElement('script');
-      script.src='assets/base-basic-shaded-opening.data.js';
+      script.src='assets/base-basic-shaded-opening.data.js?v=optimized-1';
       script.onload=()=>resolve();
       script.onerror=()=>resolve();
       document.head.appendChild(script);
