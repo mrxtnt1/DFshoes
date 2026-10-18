@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="theme-color" content="#04080d"/>
   <title>DF Shoes — Sole showroom</title>
-  <link rel="preload" href="assets/df-shoes-logo.glb" as="fetch" type="model/gltf-binary" crossorigin="anonymous" fetchpriority="high"/>
-  <link rel="preload" href="assets/df-shoes-logo-transparent.png" as="image" fetchpriority="high"/>
+  <link rel="preload" href="assets/base-basic-shaded-original.glb?v=original-logo-1" as="fetch" type="model/gltf-binary" crossorigin="anonymous" fetchpriority="high"/>
+  <link rel="preload" href="assets/opening-storm.png" as="image" fetchpriority="high"/>
   <link rel="modulepreload" href="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js" crossorigin="anonymous"/>
   <script type="module" src="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css?v=hero-atelier-bg-1"/>
     <link rel="stylesheet" href="navbar-arabic-fix.css"/>
-    <link rel="stylesheet" href="mobile-fixes.css?v=sole-cutouts-1"/>
-  <script src="app.js?v=category-models-2" defer></script>
+  <link rel="stylesheet" href="mobile-fixes.css?v=mobile-intro-13"/>
+  <script src="app.js?v=catalog-df8611-1" defer></script>
 </head>
 <body class="opening-active">
   <div class="noise" aria-hidden="true"></div>
@@ -32,8 +32,7 @@
         <p id="intro-title" data-i18n="introTitle">Crafted in motion</p>
       </div>
       <div class="intro-logo-3d" aria-label="DF Shoes">
-        <img class="intro-logo-preview" src="assets/df-shoes-logo-transparent.png" alt="" aria-hidden="true" fetchpriority="high" decoding="sync"/>
-        <model-viewer id="intro-logo-model" src="assets/df-shoes-logo.glb" alt="DF Shoes 3D logo" camera-orbit="0deg 75deg 105%" field-of-view="28deg" exposure="1.15" shadow-intensity="0.8" environment-image="neutral" interaction-prompt="none" disable-pan disable-zoom auto-rotate auto-rotate-delay="0" rotation-per-second="30deg" loading="eager" reveal="auto"></model-viewer>
+        <model-viewer id="intro-logo-model" data-src="assets/base-basic-shaded-original.glb?v=original-logo-1" alt="DF Shoes 3D logo" camera-orbit="0deg 75deg 105%" field-of-view="28deg" exposure="1.15" shadow-intensity="0.8" environment-image="neutral" interaction-prompt="none" disable-pan disable-zoom auto-rotate auto-rotate-delay="0" rotation-per-second="30deg" loading="eager" reveal="manual"></model-viewer>
       </div>
       <div class="intro-foot"><span class="intro-rule"></span><span class="intro-scroll" data-i18n="introScroll">SCROLL TO ENTER</span><span class="intro-scroll-arrow" aria-hidden="true">↓</span><span class="intro-rule"></span></div>
       <a class="intro-skip" href="#product"><span data-i18n="skipIntro">Skip intro</span> <span aria-hidden="true">↘</span></a>
@@ -71,7 +70,7 @@
         <p class="eyebrow" data-i18n="collection">مجموعة نعال DF SHOES</p>
         <div class="model-switcher" role="group" aria-label="اختيار الموديل">
           <button id="model-prev" type="button" data-label="previousModel">←</button>
-          <label class="model-list-label"><span data-i18n="model">الموديل</span><select id="model-select" aria-label="Model"></select></label><span class="model-counter"><b id="model-counter" dir="ltr">01 / 09</b></span>
+          <label class="model-list-label"><span data-i18n="model">الموديل</span><select id="model-select" aria-label="Model"></select></label><span class="model-counter"><b id="model-counter" dir="ltr">01 / 13</b></span>
           <button id="model-next" type="button" data-label="nextModel">→</button>
         </div>
         <h1 id="model-title" dir="ltr">DF-<span>Malaga</span></h1>
@@ -84,15 +83,17 @@
         <div class="specs">
           <div><b id="size-range" dir="ltr">39–40</b><small data-i18n="sizeRange">المقاسات</small></div>
           <div><b id="photo-count">04</b><small data-i18n="photoViews">زوايا العرض</small></div>
-          <div><b id="model-count" dir="ltr">09</b><small data-i18n="models">الموديلات</small></div>
+          <div><b id="model-count" dir="ltr">13</b><small data-i18n="models">الموديلات</small></div>
         </div>
         <p id="model-announcement" class="sr-only" aria-live="polite"></p>
       </div>
       <div class="showcase">
         <div class="viewer-wrap" id="viewer" data-view="interior" data-model="malaga" tabindex="0" role="region" data-label="viewerLabel">
-          <img class="stage-backdrop" src="assets/showcase-stage.png" alt="" aria-hidden="true"/>
+          <img class="stage-backdrop" src="assets/rounded-shoe-holder.png?v=holder-cutout-1" alt="" aria-hidden="true"/>
           <div class="stage-glow" aria-hidden="true"></div>
-          <div class="product-float"><img id="hero-product" class="hero-product" src="assets/interior.png" alt="DF-Malaga" draggable="false"/></div>
+          <div class="product-float">
+            <img id="hero-product" class="hero-product" src="assets/interior.png" alt="DF-Malaga" draggable="false"/>
+          </div>
           <div class="view-hint"><span data-i18n="swipe">اسحب لتغيير زاوية العرض</span> <span aria-hidden="true">↔</span></div>
         </div>
         <section class="controls" data-label="photoControls" aria-label="زوايا العرض">
@@ -154,10 +155,3 @@
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-
