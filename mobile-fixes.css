@@ -629,6 +629,14 @@ html[dir="rtl"] .category-tabs button[aria-pressed="true"]:before{left:auto;righ
   object-position:center center;
 }
 
+/* DF - Zalidj photographs are supplied upright; keep the vertical references
+   centered and prevent the generic viewer tilt from cropping their edges. */
+.viewer-wrap[data-model="dfZalidj"] .hero-product,
+.card[data-model="dfZalidj"] img{
+  transform:none!important;
+  object-position:center center;
+}
+
 /* Small-phone layout guardrails.  Galaxy A55 and similar devices report a
    narrow CSS viewport even though their physical display is high resolution;
    keep every flex/grid child shrinkable so the hero never creates a clipped

@@ -57,6 +57,8 @@
     df849Story:['تُظهر الصورة الداخلية البنية المتقاطعة والعلامات المصبوبة DF84-9 و38.','يكشف المنظر الجانبي الحافة السميكة والبنية الداخلية.','تغطي الخطوط المائلة سطح النعل الخارجي.'],
     df8611Description:'DF-8611 بنعل أخضر زيتوني محفور، وبنية داخلية مصبوبة ونقشة خارجية بارزة للمقاسات 37–40.',
     df8611Story:['تُظهر الصورة الداخلية البنية المصبوبة والعلامة DF 8611 مع المقاس 38.','يكشف المنظر الجانبي الحافة المنقوشة والارتفاع المتوازن للنعل.','تمنح النقشة الخضراء الزيتونية العميقة تماسكاً عملياً على الأسطح المختلفة.'],
+    dfZalidjDescription:'DF - Zalidj بنعل عاجي بنقشة هندسية، بنية داخلية شبكية وحافة جانبية متينة للمقاسات 26–29.',
+    dfZalidjStory:['تُظهر الصورة الداخلية شبكة DF - Zalidj المائلة والدعامات المصبوبة داخل النعل.','يكشف المنظر الجانبي الحافة العاجية ونقشة السطح الجانبي الممتدة على طول النعل.','تمنح النقشة الهندسية المتكررة على السطح الخارجي ثباتاً عملياً للمقاسات 26–29.'],
     plainDescription:'DF-Classic بدون حبل جلدي مخيط. تعرض الصورة الأصلية البنية الداخلية المقسّمة وحافة النسخة البسيطة.',
     plainStory:['نسخة DF-Classic بدون حبل جلدي مخيط حول الحافة. هذه الصورة الداخلية هي الصورة المتاحة لهذه النسخة.']
   });
@@ -83,6 +85,8 @@
     df849Story:['La vue intérieure montre la structure croisée et les marquages moulés DF84-9 et 38.','Le profil révèle le bord épais et la structure intérieure.','Des rainures diagonales couvrent le dessous de la semelle.'],
     df8611Description:'DF-8611 présente une semelle vert olive texturée, une structure moulée et un relief extérieur marqué pour les pointures 37–40.',
     df8611Story:['La vue intérieure révèle la structure moulée et le marquage DF 8611 avec la pointure 38.','Le profil montre le bord texturé et la hauteur équilibrée de la semelle.','Le relief olive profond offre une accroche pratique sur différentes surfaces.'],
+    dfZalidjDescription:'DF - Zalidj présente une semelle ivoire à motif géométrique, une structure intérieure quadrillée et un bord latéral robuste pour les pointures 26–29.',
+    dfZalidjStory:['La vue intérieure révèle la grille diagonale et les renforts moulés de DF - Zalidj.','Le profil montre le bord ivoire et son motif texturé qui s’étend sur toute la semelle.','Le motif géométrique répété du dessous offre une accroche pratique pour les pointures 26–29.'],
     plainDescription:'DF-Classic sans cordon en cuir cousu. La photographie originale montre les compartiments intérieurs et le bord de cette finition épurée.',
     plainStory:['La variante DF-Classic sans cordon en cuir cousu autour du bord. Cette vue intérieure est la photographie disponible pour cette finition.']
   });
@@ -109,6 +113,8 @@
     df849Story:['The interior view shows the crossed structure and molded DF84-9 and 38 markings.','The side view shows the thick edge and interior structure.','Diagonal grooves cover the outsole.'],
     df8611Description:'DF-8611 features a textured olive green sole, a molded inner structure and pronounced tread for sizes 37–40.',
     df8611Story:['The interior view reveals the molded structure and DF 8611 marking with size 38.','The side profile shows the textured edge and balanced sole height.','Deep olive tread provides practical grip across different surfaces.'],
+    dfZalidjDescription:'DF - Zalidj features an ivory sole with a geometric tread, a diagonal inner grid and a durable side edge for sizes 26–29.',
+    dfZalidjStory:['The interior view reveals DF - Zalidj’s diagonal grid and molded supports.','The side profile shows the ivory edge and textured pattern running along the sole.','A repeating geometric tread provides practical grip for sizes 26–29.'],
     plainDescription:'DF-Classic without stitched leather cord. The original photograph shows the interior compartments and simple edge finish.',
     plainStory:['DF-Classic without stitched leather cord around the edge. This interior view is the photograph available for this variant.']
   });
@@ -130,6 +136,7 @@
     {id:'df31',name:'DF-31',title:'DF-<span>31</span>',size:'41',views:['interior','side','outsole'],folder:'assets/df-31/',description:'df31Description',story:'df31Story',detail:'assets/df-31/side.png',category:'homme'},
     {id:'dfPorto',name:'DF-Porto',title:'DF-<span>Porto</span>',size:'30–35',views:['interior','side','outsole'],folder:'assets/df-porto-3035/',description:'dfPortoDescription',story:'dfPortoStory',detail:'assets/df-porto-3035/side.png',category:'junior'},
     {id:'dfPorto2629',name:'DF-Porto (26/29)',title:'DF-<span>Porto</span>',size:'26–29',views:['interior','side','outsole'],folder:'assets/df-porto-2629/',description:'dfPorto2629Description',story:'dfPorto2629Story',detail:'assets/df-porto-2629/side.png',category:'2629'},
+    {id:'dfZalidj',name:'DF - Zalidj',title:'DF <span>- Zalidj</span>',size:'26–29',views:['interior','side','outsole'],folder:'assets/df-zalidj/',description:'dfZalidjDescription',story:'dfZalidjStory',detail:'assets/df-zalidj/side.png',category:'2629'},
     {id:'df32',name:'DF-32',title:'DF-<span>32</span>',size:'41',views:['interior','side','outsole'],folder:'assets/df-32/',description:'df32Description',story:'df32Story',detail:'assets/df-32/side.png',category:'homme'},
     {id:'classic',name:'DF-Classic',title:'DF-<span>Classic</span>',size:'39–40',views:['interior','side','outsole'],folder:'assets/df-classic/stitched-',description:'classicDescription',story:'classicStory',detail:'assets/df-classic/stitched-side.png',category:'homme',variants:{
       stitched:{views:['interior','side','outsole'],folder:'assets/df-classic/stitched-',description:'classicDescription',story:'classicStory',detail:'assets/df-classic/stitched-side.png'},
