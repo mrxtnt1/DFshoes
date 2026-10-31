@@ -495,12 +495,14 @@
     const method=locked?'addEventListener':'removeEventListener';
     ['wheel','touchmove','keydown'].forEach(type=>window[method](type,blockTideInput,tideGuardOptions));
   };
-  function tideWipe(onCovered){
+  // fromTop sends the water down from above, for travel back up the page.
+  function tideWipe(onCovered,fromTop=false){
     if(!tide || reducedMotion.matches || tideRunning){ onCovered?.(); return; }
     tideRunning=true;
     lockTide(true);
     document.body.classList.add('tide-surging');
     tide.classList.remove('is-ebbing');
+    tide.classList.toggle('from-top',fromTop);
     void tide.offsetWidth;
     tide.classList.add('is-rising');
     setTimeout(()=>{
@@ -576,21 +578,26 @@
     el.classList.remove('surfaced');
   }
   const seaDividers=$$('.sea-divider'), seaRisers=$$('.sea-rise');
-  // Scrolling down into these sections sends the tide over the page and lands
-  // the visitor at the top of the next section.
-  const seaGates=['#gallery','#materials'].map(selector=>({target:$(selector),lastTop:undefined})).filter(gate=>gate.target);
+  // Scrolling down into a gate's section sends the tide over the page and lands
+  // at that section's top; scrolling back up out of it lands at the top of the
+  // section before (`back`, or the top of the page when there is none).
+  const seaGates=[
+    {target:$('#gallery'),back:null},
+    {target:$('#materials'),back:$('#gallery')}
+  ].filter(gate=>gate.target).map(gate=>({...gate,lastTop:undefined}));
   let lastSeaScroll=scrollY;
-  function travelUnderTide(target,hash){
+  function travelUnderTide(target,hash,fromTop=false){
     tideWipe(()=>{
       const root=document.documentElement;
       root.style.scrollBehavior='auto';
-      target.scrollIntoView({block:'start'});
+      if(target) target.scrollIntoView({block:'start'});
+      else window.scrollTo(0,0);
       root.style.scrollBehavior='';
       if(hash){ try{history.pushState(null,'',hash);}catch(_){ } }
       seaGates.forEach(gate=>{gate.lastTop=gate.target.getBoundingClientRect().top;});
       lastSeaScroll=scrollY;
       requestScroll();
-    });
+    },fromTop);
   }
   let scrollPending=false;
   let introDismissed=false;
@@ -745,15 +752,18 @@
       divider.style.setProperty('--sea-swell',(1-Math.abs(seaProgress-.5)*2).toFixed(3));
       divider.classList.toggle('in-view',seaRect.bottom>0 && seaRect.top<innerHeight);
     });
-    const scrollingDown=scrollY>lastSeaScroll;
+    const scrollingDown=scrollY>lastSeaScroll, scrollingUp=scrollY<lastSeaScroll;
     lastSeaScroll=scrollY;
-    const gateLine=innerHeight*.72;
+    // Down: the section's top rises past 60% of the screen. Up: it drops back
+    // below 28%, meaning the previous section is filling the view again.
+    const downLine=innerHeight*.6, upLine=innerHeight*.28;
     const canTravel=!tideRunning && !reducedMotion.matches && document.body.classList.contains('intro-collapsed');
     seaGates.forEach(gate=>{
-      const gateTop=gate.target.getBoundingClientRect().top;
-      const crossed=gate.lastTop!==undefined && gate.lastTop>=gateLine && gateTop<gateLine && gateTop>-innerHeight*.5;
+      const gateTop=gate.target.getBoundingClientRect().top, lastTop=gate.lastTop;
       gate.lastTop=gateTop;
-      if(canTravel && scrollingDown && crossed && gate.target.offsetHeight) travelUnderTide(gate.target);
+      if(!canTravel || lastTop===undefined || !gate.target.offsetHeight) return;
+      if(scrollingDown && lastTop>=downLine && gateTop<downLine && gateTop>-innerHeight*.5) travelUnderTide(gate.target);
+      else if(scrollingUp && lastTop<=upLine && gateTop>upLine && gateTop<innerHeight*1.2) travelUnderTide(gate.back,null,true);
     });
     seaRisers.forEach(el=>{
       const seaRect=el.getBoundingClientRect();
@@ -839,7 +849,7 @@
     const target=document.getElementById(decodeURIComponent(link.hash.slice(1)));
     if(!target || (link.closest('#materials') && target.closest('#materials'))) return;
     event.preventDefault();
-    travelUnderTide(target,link.hash);
+    travelUnderTide(target,link.hash,target.getBoundingClientRect().top<0);
   });
 })();
 

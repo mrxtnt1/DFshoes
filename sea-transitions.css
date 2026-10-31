@@ -44,6 +44,11 @@
 .tide-curtain:not(.is-rising):not(.is-ebbing) *{animation-play-state:paused}
 @keyframes tideRise{from{transform:translate3d(0,calc(100vh + var(--tide-crest)),0)}to{transform:translate3d(0,0,0)}}
 @keyframes tideEbb{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,calc(-100vh - var(--tide-crest)),0)}}
+/* Travelling back up: the water pours down from above and drains away below. */
+.tide-curtain.from-top.is-rising{animation-name:tideFall}
+.tide-curtain.from-top.is-ebbing{animation-name:tideDrain}
+@keyframes tideFall{from{transform:translate3d(0,calc(-100vh - var(--tide-crest)),0)}to{transform:translate3d(0,0,0)}}
+@keyframes tideDrain{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,calc(100vh + var(--tide-crest)),0)}}
 @keyframes tideSwell{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.28)}}
 @keyframes tideDriftA{to{background-position-x:-1500px}}
 @keyframes tideDriftB{to{background-position-x:-1000px}}
