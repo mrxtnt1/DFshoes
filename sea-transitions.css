@@ -79,7 +79,6 @@ body.tide-surging.motion-ready #product .showcase{transition-delay:.72s}
 .sea-divider b:nth-of-type(6){--x:91%;--s:4px;--d:2.6s;--delay:-1.6s}
 .sea-divider:not(.in-view) i{animation-play-state:paused}
 .sea-divider.in-view b{animation-play-state:running}
-.gallery>.sea-divider:first-child{margin-top:-24px;margin-bottom:18px}
 .sea-divider-story{margin-top:40px;margin-bottom:-30px}
 .sea-divider-footer{margin-top:10px}
 @keyframes seaDriftA{to{background-position-x:-1500px}}
@@ -114,13 +113,19 @@ html.tide-lock{scrollbar-gutter:stable}
 .sea-ripple::after{opacity:0;background:radial-gradient(circle at 50% 50%,rgba(235,250,255,.95) var(--ripple-hole),rgba(170,228,250,.35) calc(var(--ripple-hole) + 10px),rgba(170,228,250,0) calc(var(--ripple-hole) + 44px))}
 .sea-ripple.is-opening::after{opacity:1}
 
+/* ---------- The hero and the gallery's view cards sit still: no scroll reveals ---------- */
+body.motion-ready #product,
+body.motion-ready #product .hero-copy>*,
+body.motion-ready #product .showcase,
+#view-cards .card{opacity:1;translate:0 0}
+#gallery>.section-head{opacity:1;transform:none}
+
 @media(max-width:700px){
   :root{--tide-crest:90px}
   .sea-divider{height:72px}
   .sea-divider i:nth-child(1){background-size:750px 62%}
   .sea-divider i:nth-child(2){background-size:500px 76%}
   .sea-divider i:nth-child(3){background-size:600px 100%}
-  .gallery>.sea-divider:first-child{margin-top:-18px;margin-bottom:10px}
   .sea-divider-story{margin-top:24px;margin-bottom:-12px}
 }
 @media(prefers-reduced-motion:reduce){
