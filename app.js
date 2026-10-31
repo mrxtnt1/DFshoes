@@ -619,11 +619,10 @@
     el.classList.remove('surfaced');
   }
   const seaDividers=$$('.sea-divider'), seaRisers=$$('.sea-rise');
-  // Scrolling down into a gate's section sends the tide over the page and lands
-  // at that section's top; scrolling back up out of it lands at the top of the
-  // section before (`back`, or the top of the page when there is none).
+  // Scrolling down into a gate's section sends a splash over the page and
+  // lands at that section's top; scrolling back up out of it lands at the top
+  // of the section before (`back`). The hero and the gallery scroll freely.
   const seaGates=[
-    {target:$('#gallery'),back:null,quick:true},
     {target:$('#materials'),back:$('#gallery'),quick:true}
   ].filter(gate=>gate.target).map(gate=>({...gate,lastTop:undefined}));
   let lastSeaScroll=scrollY;
@@ -644,65 +643,6 @@
       requestScroll();
     },fromTop,land);
   }
-  // The hero and the gallery page one swipe (or wheel flick) at a time: down
-  // from the hero splashes to the gallery, up from the start of the gallery
-  // splashes back. Where the hero is taller than the screen (phones), a swipe
-  // first steps to its bottom edge so its controls stay reachable. Leftover
-  // momentum from the same gesture is swallowed, and deeper in the gallery
-  // the page scrolls normally.
-  const pageHero=$('#product'), pageGallery=$('#gallery');
-  const pageStep=direction=>{
-    if(!pageHero || !pageGallery || !pageHero.offsetHeight || !pageGallery.offsetHeight) return null;
-    if(!document.body.classList.contains('intro-collapsed') || reducedMotion.matches) return null;
-    const galleryTop=pageGallery.getBoundingClientRect().top;
-    if(galleryTop>8){
-      if(direction>0){
-        const heroEnd=layoutTop(pageGallery)-innerHeight;
-        return scrollY<heroEnd-8?()=>window.scrollTo({top:heroEnd,behavior:'smooth'}):()=>travelUnderTide(pageGallery,null,false,true);
-      }
-      return scrollY>2?()=>window.scrollTo({top:0,behavior:'smooth'}):null;
-    }
-    if(direction<0 && galleryTop>-innerHeight*.35) return ()=>travelUnderTide(null,null,true,true);
-    return null;
-  };
-  let wheelLast=0, wheelSum=0, wheelHandled=false;
-  window.addEventListener('wheel',event=>{
-    if(event.ctrlKey) return;
-    const now=performance.now(), fresh=now-wheelLast>200;
-    wheelLast=now;
-    if(fresh){ wheelSum=0; wheelHandled=false; }
-    if(wheelHandled || tideRunning){ event.preventDefault(); return; }
-    const delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?innerHeight:1);
-    if(!delta || !pageStep(Math.sign(delta))) return;
-    event.preventDefault();
-    wheelSum+=delta;
-    if(Math.abs(wheelSum)<24) return;
-    const step=pageStep(Math.sign(wheelSum));
-    wheelHandled=true;
-    step?.();
-  },{passive:false});
-  let touchStart=null;
-  window.addEventListener('touchstart',event=>{
-    const touch=event.touches[0];
-    // Sliders, pickers and the tab rail keep their own touch handling.
-    const own=event.target.closest?.('input,select,textarea,model-viewer,.tabs');
-    touchStart=event.touches.length===1 && !own?{x:touch.clientX,y:touch.clientY,state:'pending'}:null;
-  },{passive:true});
-  window.addEventListener('touchmove',event=>{
-    if(!touchStart || touchStart.state==='free') return;
-    if(touchStart.state==='done'){ if(event.cancelable) event.preventDefault(); return; }
-    const touch=event.touches[0], dx=touch.clientX-touchStart.x, dy=touch.clientY-touchStart.y;
-    if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>8){ touchStart.state='free'; return; }
-    const direction=dy<0?1:-1, step=pageStep(direction);
-    // Hold the page still while the swipe's direction is still being read.
-    if(!step && (Math.abs(dy)>8 || !pageStep(-direction))){ touchStart.state='free'; return; }
-    if(!event.cancelable){ touchStart.state='free'; return; }
-    event.preventDefault();
-    if(!step || Math.abs(dy)<28) return;
-    touchStart.state='done';
-    step();
-  },{passive:false});
-  window.addEventListener('touchend',()=>{ touchStart=null; },{passive:true});
   let scrollPending=false;
   let introDismissed=false;
   let introCollapseTimer=null;
@@ -945,16 +885,16 @@
     // Keep reduced-motion users from being trapped behind a static intro.
     setTimeout(()=>{ if(!introDismissed) dismissOpening(); },1600);
   }
-  // In-page links travel between sections under a passing tide, or the quick
-  // splash when heading for the hero or the gallery.
+  // In-page links travel between sections under a passing splash; links to
+  // the hero and the gallery just scroll there.
   document.addEventListener('click',event=>{
     const link=event.target.closest?.('a[href^="#"]');
     if(!link || event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     if(!document.body.classList.contains('intro-collapsed') || reducedMotion.matches || tideRunning) return;
     const target=document.getElementById(decodeURIComponent(link.hash.slice(1)));
-    if(!target || (link.closest('#materials') && target.closest('#materials'))) return;
+    if(!target || target.id==='product' || target.id==='gallery' || (link.closest('#materials') && target.closest('#materials'))) return;
     event.preventDefault();
-    travelUnderTide(target,link.hash,target.getBoundingClientRect().top<0,target.id==='product' || target.id==='gallery');
+    travelUnderTide(target,link.hash,target.getBoundingClientRect().top<0,true);
   });
 })();
 

@@ -113,13 +113,6 @@ html.tide-lock{scrollbar-gutter:stable}
 .sea-ripple::before{background:radial-gradient(circle at var(--ripple-x) var(--ripple-y),rgba(205,242,255,0) calc(var(--ripple-fill) - 46px),rgba(205,242,255,.22) calc(var(--ripple-fill) - 14px),rgba(235,250,255,.9) calc(var(--ripple-fill) - 2px),rgba(235,250,255,0) var(--ripple-fill))}
 .sea-ripple::after{opacity:0;background:radial-gradient(circle at 50% 50%,rgba(235,250,255,.95) var(--ripple-hole),rgba(170,228,250,.35) calc(var(--ripple-hole) + 10px),rgba(170,228,250,0) calc(var(--ripple-hole) + 44px))}
 .sea-ripple.is-opening::after{opacity:1}
-body.ripple-surging.motion-ready #product{transition-delay:.12s}
-body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(1){transition-delay:.18s}
-body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(2){transition-delay:.22s}
-body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(3){transition-delay:.26s}
-body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(4){transition-delay:.3s}
-body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(5){transition-delay:.34s}
-body.ripple-surging.motion-ready #product .showcase{transition-delay:.24s}
 
 @media(max-width:700px){
   :root{--tide-crest:90px}
