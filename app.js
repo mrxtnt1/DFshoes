@@ -527,7 +527,8 @@
   // scroll toward, the page jumps underneath, and a foam ring opens from the
   // centre.
   const ripple=$('.sea-ripple');
-  const RIPPLE_IN=330, RIPPLE_HOLD=60, RIPPLE_OUT=420;
+  // A touch slower on phones, where the splash fills a small screen in a blink.
+  const rippleTiming=()=>innerWidth<=700?{rise:460,hold:90,open:560}:{rise:330,hold:60,open:420};
   const canRipple=!!(ripple && window.CSS?.registerProperty && CSS.supports('mask-composite','intersect') && ripple.animate);
   function rippleWipe(onCovered,fromTop=false,settle){
     if(!canRipple){ tideWipe(onCovered,fromTop,settle); return; }
@@ -540,7 +541,8 @@
     ripple.classList.toggle('from-top',fromTop);
     ripple.classList.remove('is-opening');
     ripple.classList.add('is-active');
-    const splash=ripple.animate({'--ripple-fill':['0px',`${fill}px`]},{duration:RIPPLE_IN,easing:'cubic-bezier(.45,0,.2,1)',fill:'forwards'});
+    const timing=rippleTiming();
+    const splash=ripple.animate({'--ripple-fill':['0px',`${fill}px`]},{duration:timing.rise,easing:'cubic-bezier(.45,0,.2,1)',fill:'forwards'});
     const finish=()=>{
       ripple.classList.remove('is-active','is-opening');
       ripple.getAnimations().forEach(anim=>anim.cancel());
@@ -554,8 +556,8 @@
           lockTide(false);
           settle?.();
           ripple.classList.add('is-opening');
-          ripple.animate({'--ripple-hole':['0px',`${hole}px`]},{duration:RIPPLE_OUT,easing:'cubic-bezier(.2,.65,.25,1)',fill:'forwards'}).finished.then(finish,finish);
-        },RIPPLE_HOLD);
+          ripple.animate({'--ripple-hole':['0px',`${hole}px`]},{duration:timing.open,easing:'cubic-bezier(.2,.65,.25,1)',fill:'forwards'}).finished.then(finish,finish);
+        },timing.hold);
       }
     },finish);
   }
@@ -598,7 +600,7 @@
     el.dataset.sea='up';
     if(reducedMotion.matches){ el.classList.add('surfaced'); return; }
     // Under a passing tide, wait for the water to start ebbing before surfacing.
-    const start=performance.now()+(tideRunning?(document.body.classList.contains('ripple-surging')?RIPPLE_HOLD+120:TIDE_HOLD+300):0), duration=1250;
+    const start=performance.now()+(tideRunning?(document.body.classList.contains('ripple-surging')?rippleTiming().hold+120:TIDE_HOLD+300):0), duration=1250;
     const step=now=>{
       if(el.dataset.sea!=='up') return;
       const t=clamp((now-start)/duration), eased=1-Math.pow(1-t,3);
@@ -625,11 +627,11 @@
     {target:$('#materials'),back:$('#gallery'),quick:true}
   ].filter(gate=>gate.target).map(gate=>({...gate,lastTop:undefined}));
   let lastSeaScroll=scrollY;
+  // Measured from layout offsets, so entrance transforms can't skew it.
+  const layoutTop=el=>{let top=0;for(;el;el=el.offsetParent) top+=el.offsetTop;return top;};
   function travelUnderTide(target,hash,fromTop=false,quick=false){
     // An instant jump also cancels any wheel or touch momentum still running,
     // which could otherwise carry the page off its landing spot.
-    // Measured from layout offsets, so entrance transforms can't skew it.
-    const layoutTop=el=>{let top=0;for(;el;el=el.offsetParent) top+=el.offsetTop;return top;};
     const land=()=>{
       const top=target?Math.max(0,Math.round(layoutTop(target)-(parseFloat(getComputedStyle(target).scrollMarginTop)||0))):0;
       if(Math.abs(scrollY-top)>1) window.scrollTo({top,behavior:'instant'});
@@ -642,6 +644,65 @@
       requestScroll();
     },fromTop,land);
   }
+  // The hero and the gallery page one swipe (or wheel flick) at a time: down
+  // from the hero splashes to the gallery, up from the start of the gallery
+  // splashes back. Where the hero is taller than the screen (phones), a swipe
+  // first steps to its bottom edge so its controls stay reachable. Leftover
+  // momentum from the same gesture is swallowed, and deeper in the gallery
+  // the page scrolls normally.
+  const pageHero=$('#product'), pageGallery=$('#gallery');
+  const pageStep=direction=>{
+    if(!pageHero || !pageGallery || !pageHero.offsetHeight || !pageGallery.offsetHeight) return null;
+    if(!document.body.classList.contains('intro-collapsed') || reducedMotion.matches) return null;
+    const galleryTop=pageGallery.getBoundingClientRect().top;
+    if(galleryTop>8){
+      if(direction>0){
+        const heroEnd=layoutTop(pageGallery)-innerHeight;
+        return scrollY<heroEnd-8?()=>window.scrollTo({top:heroEnd,behavior:'smooth'}):()=>travelUnderTide(pageGallery,null,false,true);
+      }
+      return scrollY>2?()=>window.scrollTo({top:0,behavior:'smooth'}):null;
+    }
+    if(direction<0 && galleryTop>-innerHeight*.35) return ()=>travelUnderTide(null,null,true,true);
+    return null;
+  };
+  let wheelLast=0, wheelSum=0, wheelHandled=false;
+  window.addEventListener('wheel',event=>{
+    if(event.ctrlKey) return;
+    const now=performance.now(), fresh=now-wheelLast>200;
+    wheelLast=now;
+    if(fresh){ wheelSum=0; wheelHandled=false; }
+    if(wheelHandled || tideRunning){ event.preventDefault(); return; }
+    const delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?innerHeight:1);
+    if(!delta || !pageStep(Math.sign(delta))) return;
+    event.preventDefault();
+    wheelSum+=delta;
+    if(Math.abs(wheelSum)<24) return;
+    const step=pageStep(Math.sign(wheelSum));
+    wheelHandled=true;
+    step?.();
+  },{passive:false});
+  let touchStart=null;
+  window.addEventListener('touchstart',event=>{
+    const touch=event.touches[0];
+    // Sliders, pickers and the tab rail keep their own touch handling.
+    const own=event.target.closest?.('input,select,textarea,model-viewer,.tabs');
+    touchStart=event.touches.length===1 && !own?{x:touch.clientX,y:touch.clientY,state:'pending'}:null;
+  },{passive:true});
+  window.addEventListener('touchmove',event=>{
+    if(!touchStart || touchStart.state==='free') return;
+    if(touchStart.state==='done'){ if(event.cancelable) event.preventDefault(); return; }
+    const touch=event.touches[0], dx=touch.clientX-touchStart.x, dy=touch.clientY-touchStart.y;
+    if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>8){ touchStart.state='free'; return; }
+    const direction=dy<0?1:-1, step=pageStep(direction);
+    // Hold the page still while the swipe's direction is still being read.
+    if(!step && (Math.abs(dy)>8 || !pageStep(-direction))){ touchStart.state='free'; return; }
+    if(!event.cancelable){ touchStart.state='free'; return; }
+    event.preventDefault();
+    if(!step || Math.abs(dy)<28) return;
+    touchStart.state='done';
+    step();
+  },{passive:false});
+  window.addEventListener('touchend',()=>{ touchStart=null; },{passive:true});
   let scrollPending=false;
   let introDismissed=false;
   let introCollapseTimer=null;
