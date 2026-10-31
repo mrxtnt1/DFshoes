@@ -6,7 +6,7 @@
     ar: {
       introTitle:'مصممة لتتحرك',introScroll:'مرّر للدخول',skipIntro:'تجاوز المقدمة',
       product:'المنتج', gallery:'المعرض', language:'اللغة', collection:'مجموعة نعال DF SHOES', model:'الموديل', models:'الموديلات', sizeRange:'المقاسات', photoViews:'زوايا العرض', reachUs:'كيفية الوصول إلينا', hqAddress:'المقر الرئيسي: المدية، الجزائر', categoryNavigation:'التنقل حسب الفئة', allCategories:'كل الفئات', showCategories:'عرض الفئات', hideCategories:'إخفاء الفئات', categoryHomme:'الرجال', categoryFemme:'النساء', category3035:'30/35', category2629:'26/29',categoryCaddie:'كادي', emptyCategory:'لا توجد موديلات مرتبطة بهذه الفئة حالياً.',
-      interior:'الداخل', side:'الجانب', outsole:'النعل الخارجي', profile:'المظهر الجانبي', color:'اللون',viewAngle:'زاوية العرض', productViews:'زوايا المنتج', materialStudy:'دراسة التصميم',
+      interior:'الداخل', side:'الجانب', outsole:'النعل الخارجي', profile:'المظهر الجانبي', upperInterior:'الداخل العلوي', sideUp:'الجانب العلوي', upperOutsole:'السطح العلوي', color:'اللون',viewAngle:'زاوية العرض', productViews:'زوايا المنتج', materialStudy:'دراسة التصميم',
       swipe:'اسحب لتغيير زاوية العرض', previousModel:'الموديل السابق', nextModel:'الموديل التالي', previousView:'الزاوية السابقة', nextView:'الزاوية التالية', free3d:'عرض ثلاثي الأبعاد حر', rotate3d:'اسحب للتدوير', viewerLabel:'صور النعل. استخدم السهمين أو اسحب لتغيير زاوية العرض.', photoControls:'اختيار زاوية العرض',
       storyTitle0:'كل زاوية،\nتفصيل جديد.', storyTitle1:'الشكل يتبع\nالوظيفة.', storyTitle2:'التفاصيل تبدأ\nمن الأسفل.', scrollExplore:'مرّر لاكتشاف التفاصيل', backProduct:'العودة إلى المنتج', backTop:'العودة إلى الأعلى ↑', footer:'تصميم النعال من DF SHOES',
       captions:['بنية داخلية سداسية','حافة النعل','نقشة السطح الخارجي','الخط الجانبي'],
@@ -18,7 +18,7 @@
     fr: {
       introTitle:'Pensée en mouvement',introScroll:'DÉFILEZ POUR ENTRER',skipIntro:'Passer l’intro',
       product:'Produit',gallery:'Galerie',language:'Langue',collection:'COLLECTION DE SEMELLES DF SHOES',model:'Modèle',models:'Modèles',sizeRange:'Pointures',photoViews:'Vues',reachUs:'Comment nous rejoindre',hqAddress:'Siège : Médéa, Algérie',categoryNavigation:'Navigation par catégorie',allCategories:'Toutes les catégories',showCategories:'Afficher les catégories',hideCategories:'Masquer les catégories',categoryHomme:"L'homme",categoryFemme:'La Femme',category3035:'30/35',category2629:'26/29',categoryCaddie:'Caddie',emptyCategory:'Aucun modèle n’est actuellement associé à cette catégorie.',interior:'Intérieur',side:'Côté',outsole:'Dessous',profile:'Profil',color:'COULEUR',viewAngle:'ANGLE DE VUE',productViews:'Vues du produit',materialStudy:'Étude du design',swipe:'GLISSEZ POUR CHANGER DE VUE',previousModel:'Modèle précédent',nextModel:'Modèle suivant',previousView:'Vue précédente',nextView:'Vue suivante',free3d:'Vue 3D libre',rotate3d:'Faites glisser pour tourner',viewerLabel:'Photos de la semelle. Glissez ou utilisez les flèches pour changer de vue.',photoControls:'Choisir une vue',
-      storyTitle0:'Chaque angle,\nun nouveau détail.',storyTitle1:'La forme suit\nla fonction.',storyTitle2:'Le détail vient\nd’en dessous.',scrollExplore:'Défilez pour explorer',backProduct:'Retour au produit',backTop:'Retour en haut ↑',footer:'SEMELLES SIGNÉES DF SHOES',captions:['Structure alvéolaire','Bord de la semelle','Motif de la semelle','Silhouette latérale'],
+      storyTitle0:'Chaque angle,\nun nouveau détail.',storyTitle1:'La forme suit\nla fonction.',storyTitle2:'Le détail vient\nd’en dessous.',scrollExplore:'Défilez pour explorer',backProduct:'Retour au produit',backTop:'Retour en haut ↑',footer:'SEMELLES SIGNÉES DF SHOES',captions:['Structure alvéolaire','Bord de la semelle','Motif de la semelle','Silhouette latérale'],upperInterior:'Intérieur supérieur',sideUp:'Côté supérieur',upperOutsole:'Dessus extérieur',
       malagaDescription:'Explorez DF-Malaga : une structure alvéolaire, un bord sculpté et un dessous finement texturé. Découvrez les photographies originales sous chaque angle.',
       fsDescription:'Découvrez FS-01 : une finition blanche, une structure intérieure alvéolaire et un motif extérieur distinctif. Disponible en pointures 39–44.',
       malagaStory:['Découvrez les alvéoles hexagonales et le bord arrondi de DF-Malaga à travers les photographies originales.','Une vue rapprochée révèle la jonction des cloisons hexagonales avec le pourtour et les inscriptions du moule.','Un motif fin et répété couvre le dessous, autour d’une zone centrale marquée de la pointure.'],
@@ -27,7 +27,7 @@
     en: {
       introTitle:'Crafted in motion',introScroll:'SCROLL TO ENTER',skipIntro:'Skip intro',
       product:'Product',gallery:'Gallery',language:'Language',collection:'DF SHOES SOLE COLLECTION',model:'Model',models:'Models',sizeRange:'Size range',photoViews:'Photo views',reachUs:'How to reach us',hqAddress:'Factory HQ · Médéa, Algeria',categoryNavigation:'Browse by category',allCategories:'All categories',showCategories:'Show categories',hideCategories:'Hide categories',categoryHomme:'Men',categoryFemme:'Women',category3035:'30/35',category2629:'26/29',categoryCaddie:'Caddie',emptyCategory:'No models are currently assigned to this category.',interior:'Interior',side:'Side',outsole:'Outsole',profile:'Profile',color:'COLOR',viewAngle:'VIEW ANGLE',productViews:'Product Views',materialStudy:'Material Study',swipe:'SWIPE TO CHANGE VIEW',previousModel:'Previous model',nextModel:'Next model',previousView:'Previous view',nextView:'Next view',free3d:'Free 3D view',rotate3d:'Drag to rotate',viewerLabel:'Sole photographs. Swipe or use arrow keys to change view.',photoControls:'Choose product view',
-      storyTitle0:'Every angle.\nAnother detail.',storyTitle1:'Form follows\nfunction.',storyTitle2:'Detail from\nthe ground up.',scrollExplore:'Scroll to explore',backProduct:'Back to product',backTop:'Back to top ↑',footer:'SOLE DESIGN BY DF SHOES',captions:['Honeycomb structure','Sole edge','Outsole pattern','Side silhouette'],
+      storyTitle0:'Every angle.\nAnother detail.',storyTitle1:'Form follows\nfunction.',storyTitle2:'Detail from\nthe ground up.',scrollExplore:'Scroll to explore',backProduct:'Back to product',backTop:'Back to top ↑',footer:'SOLE DESIGN BY DF SHOES',captions:['Honeycomb structure','Sole edge','Outsole pattern','Side silhouette'],upperInterior:'Upper interior',sideUp:'Side up',upperOutsole:'Upper outsole',
       malagaDescription:'Explore DF-Malaga: a honeycomb interior, sculpted edge and finely patterned outsole. Discover the original product photographs from every side.',
       fsDescription:'Meet FS-01: a white finish, honeycomb interior and distinctive outsole pattern. Available in sizes 39–44.',
       malagaStory:['Explore DF-Malaga’s hexagonal cavities and rounded rim through the original product photographs.','A close view reveals the hexagonal walls meeting the surrounding rim, with molded markings inside the sole.','A fine repeating pattern covers the outsole, framing a central panel with the molded size marking.'],
@@ -57,6 +57,12 @@
     df849Story:['تُظهر الصورة الداخلية البنية المتقاطعة والعلامات المصبوبة DF84-9 و38.','يكشف المنظر الجانبي الحافة السميكة والبنية الداخلية.','تغطي الخطوط المائلة سطح النعل الخارجي.'],
     df8611Description:'DF-8611 بنعل أخضر زيتوني محفور، وبنية داخلية مصبوبة ونقشة خارجية بارزة للمقاسات 37–40.',
     df8611Story:['تُظهر الصورة الداخلية البنية المصبوبة والعلامة DF 8611 مع المقاس 38.','يكشف المنظر الجانبي الحافة المنقوشة والارتفاع المتوازن للنعل.','تمنح النقشة الخضراء الزيتونية العميقة تماسكاً عملياً على الأسطح المختلفة.'],
+    dfVerano02Description:'DF-VERANO-02 بنعل رجالي عسلي، بنية داخلية خفيفة ونقشة خارجية بخطوط عرضية للمقاسات 43–45.',
+    dfVerano02Story:['تُظهر الصورة الداخلية العلوية تفاصيل DF VERANO-2 والعلامات المصبوبة للمقاسات 43–45.','يكشف المنظر الجانبي طبقات النعل العسلية والحافة المسننة المتينة.','تمنح الخطوط العرضية المنتظمة على السطح الخارجي شكلاً عملياً وثباتاً واضحاً.'],
+    df8406Description:'DF 84-06 Soulier بنعل رجالي أبيض وأسود، بنية داخلية خفيفة ونقشة خارجية عميقة للمقاس 41.',
+    df8406Story:['تُظهر الصورة الداخلية بنية DF 84-6 البيضاء والعلامة المصبوبة للمقاس 41.','يكشف المنظر الجانبي تباين الحافة السوداء مع الطبقة البيضاء وارتفاع النعل المتوازن.','تمنح الكتل المثلثة العميقة على السطح الخارجي تماسكاً عملياً.'],
+    df8406CaddyDescription:'DF 84-6 Caddy Soulier بنعل رياضي أسود وأصفر، بنية داخلية قوية ونقشة خارجية عميقة للمقاسين 36–37.',
+    df8406CaddyStory:['تُظهر الصورة الداخلية بنية DF 84-6 Caddy باللون الأصفر وعلامتي المقاس 36 و37.','يكشف المنظر الجانبي تباين الطبقة الصفراء مع الحافة السوداء وارتفاع النعل الرياضي.','تمنح الكتل المثلثة العميقة مع اللمسات الصفراء تماسكاً واضحاً على الأسطح المختلفة.'],
     dfZalidjDescription:'DF - Zalidj بنعل عاجي بنقشة هندسية، بنية داخلية شبكية وحافة جانبية متينة للمقاسات 26–29.',
     dfZalidjStory:['تُظهر الصورة الداخلية شبكة DF - Zalidj المائلة والدعامات المصبوبة داخل النعل.','يكشف المنظر الجانبي الحافة العاجية ونقشة السطح الجانبي الممتدة على طول النعل.','تمنح النقشة الهندسية المتكررة على السطح الخارجي ثباتاً عملياً للمقاسات 26–29.'],
     plainDescription:'DF-Classic بدون حبل جلدي مخيط. تعرض الصورة الأصلية البنية الداخلية المقسّمة وحافة النسخة البسيطة.',
@@ -85,6 +91,12 @@
     df849Story:['La vue intérieure montre la structure croisée et les marquages moulés DF84-9 et 38.','Le profil révèle le bord épais et la structure intérieure.','Des rainures diagonales couvrent le dessous de la semelle.'],
     df8611Description:'DF-8611 présente une semelle vert olive texturée, une structure moulée et un relief extérieur marqué pour les pointures 37–40.',
     df8611Story:['La vue intérieure révèle la structure moulée et le marquage DF 8611 avec la pointure 38.','Le profil montre le bord texturé et la hauteur équilibrée de la semelle.','Le relief olive profond offre une accroche pratique sur différentes surfaces.'],
+    dfVerano02Description:'DF-VERANO-02 présente une semelle homme beige, une structure intérieure légère et un relief extérieur à lignes transversales pour les pointures 43–45.',
+    dfVerano02Story:['La vue intérieure supérieure révèle les détails DF VERANO-2 et les repères moulés des pointures 43–45.','Le profil montre les couches beiges et le bord cranté robuste de la semelle.','Les lignes transversales régulières donnent au dessous une silhouette pratique et une accroche nette.'],
+    df8406Description:'DF 84-06 Soulier présente une semelle homme blanche et noire, une structure intérieure légère et un relief profond pour la pointure 41.',
+    df8406Story:['La vue intérieure révèle la structure blanche de DF 84-6 et le marquage moulé de la pointure 41.','Le profil montre le contraste entre le bord noir, la couche blanche et la hauteur équilibrée de la semelle.','Les crampons triangulaires profonds offrent une accroche pratique sur différentes surfaces.'],
+    df8406CaddyDescription:'DF 84-6 Caddy Soulier présente une semelle sportive noire et jaune, une structure intérieure solide et un relief profond pour les pointures 36–37.',
+    df8406CaddyStory:['La vue intérieure révèle la structure jaune de DF 84-6 Caddy et les repères moulés des pointures 36 et 37.','Le profil montre le contraste entre la couche jaune et le bord noir avec une hauteur sportive.','Les crampons triangulaires profonds et les touches jaunes offrent une accroche nette sur différentes surfaces.'],
     dfZalidjDescription:'DF - Zalidj présente une semelle ivoire à motif géométrique, une structure intérieure quadrillée et un bord latéral robuste pour les pointures 26–29.',
     dfZalidjStory:['La vue intérieure révèle la grille diagonale et les renforts moulés de DF - Zalidj.','Le profil montre le bord ivoire et son motif texturé qui s’étend sur toute la semelle.','Le motif géométrique répété du dessous offre une accroche pratique pour les pointures 26–29.'],
     plainDescription:'DF-Classic sans cordon en cuir cousu. La photographie originale montre les compartiments intérieurs et le bord de cette finition épurée.',
@@ -113,6 +125,12 @@
     df849Story:['The interior view shows the crossed structure and molded DF84-9 and 38 markings.','The side view shows the thick edge and interior structure.','Diagonal grooves cover the outsole.'],
     df8611Description:'DF-8611 features a textured olive green sole, a molded inner structure and pronounced tread for sizes 37–40.',
     df8611Story:['The interior view reveals the molded structure and DF 8611 marking with size 38.','The side profile shows the textured edge and balanced sole height.','Deep olive tread provides practical grip across different surfaces.'],
+    dfVerano02Description:'DF-VERANO-02 is a men’s tan sole with a lightweight interior and ribbed outsole pattern for sizes 43–45.',
+    dfVerano02Story:['The upper interior reveals DF VERANO-2 details and molded markings for sizes 43–45.','The side profile shows the layered tan construction and durable lugged edge.','Even transverse ribs give the outsole a practical silhouette and clear grip.'],
+    df8406Description:'DF 84-06 Soulier is a men’s black and white sole with a lightweight interior structure and deep tread for size 41.',
+    df8406Story:['The interior view reveals the white DF 84-6 structure and molded size 41 marking.','The side profile shows the contrast between the black edge, white layer and balanced sole height.','Deep triangular lugs provide practical grip across different surfaces.'],
+    df8406CaddyDescription:'DF 84-6 Caddy Soulier is a black and yellow sport sole with a strong interior structure and deep tread for sizes 36–37.',
+    df8406CaddyStory:['The interior view reveals the yellow DF 84-6 Caddy structure and molded size 36 and 37 markings.','The side profile shows the contrast between the yellow layer and black edge with a sporty sole height.','Deep triangular lugs and yellow accents provide clear grip across different surfaces.'],
     dfZalidjDescription:'DF - Zalidj features an ivory sole with a geometric tread, a diagonal inner grid and a durable side edge for sizes 26–29.',
     dfZalidjStory:['The interior view reveals DF - Zalidj’s diagonal grid and molded supports.','The side profile shows the ivory edge and textured pattern running along the sole.','A repeating geometric tread provides practical grip for sizes 26–29.'],
     plainDescription:'DF-Classic without stitched leather cord. The original photograph shows the interior compartments and simple edge finish.',
@@ -125,21 +143,24 @@
   dictionary.fr.df2636Story=['DF-2636 présente des nervures intérieures transversales et des repères moulés.','Le talon surélevé et la cambrure dessinent le profil de DF-2636.','Un motif floral rejoint les rainures horizontales de la semelle noire.'];
   dictionary.ar.df2636Story=['يتميز DF-2636 بدعامات داخلية عرضية وعلامات مصبوبة للموديل والمقاس.','يحدد الكعب المرتفع والقوس المنحني المظهر الجانبي لموديل DF-2636.','تلتقي الزخرفة الزهرية مع الخطوط الأفقية على النعل الأسود.'];
   const models = [
-    {id:'malaga',name:'DF-Malaga',title:'DF-<span>Malaga</span>',size:'39–40',views:['interior','side','outsole','profile'],folder:'assets/',description:'malagaDescription',story:'malagaStory',detail:'assets/side.png',category:'homme'},
-    {id:'fs',name:'FS-01',title:'FS-<span>01</span>',size:'39–44',views:['interior','side','outsole'],folder:'assets/fs-01/',description:'fsDescription',story:'fsStory',detail:'assets/fs-01/side.png',category:'homme'},
-    {id:'2636',name:'DF-2636',title:'DF-<span>2636</span>',size:'37',views:['interior','side','outsole','profile'],folder:'assets/df-2636/',description:'df2636Description',story:'df2636Story',detail:'assets/df-2636/profile.png',category:'femme'},
-    {id:'2639',name:'DF-2639',title:'DF-<span>2639</span>',size:'39',views:['interior','side','outsole'],folder:'assets/df-2639/',description:'df2639Description',story:'df2639Story',detail:'assets/df-2639/side.png',category:'femme'},
-    {id:'2642',name:'DF-2642',title:'DF-<span>2642</span>',size:'38',views:['interior','side','outsole','profile'],folder:'assets/df-2642/',description:'df2642Description',story:'df2642Story',detail:'assets/df-2642/profile.png',category:'femme'},
-    {id:'df849',name:'DF84-9 Sabot',title:'DF84-<span>9 Sabot</span>',size:'38',views:['interior','side','outsole'],folder:'assets/df84-9/',description:'df849Description',story:'df849Story',detail:'assets/df84-9/side.png',category:'femme'},
-    {id:'df8611',name:'DF-8611',title:'DF-<span>8611</span>',size:'37–40',views:['interior','side','outsole'],folder:'assets/df-8611/',description:'df8611Description',story:'df8611Story',detail:'assets/df-8611/side.png',category:'femme'},
-    {id:'soulier3035',name:'Soulier 30–35',title:'Soulier <span>30–35</span>',size:'30–35',views:['interior','side','outsole'],folder:'assets/soulier-3035/',description:'soulier3035Description',story:'soulier3035Story',detail:'assets/soulier-3035/side.png',category:'junior'},
-    {id:'df31',name:'DF-31',title:'DF-<span>31</span>',size:'41',views:['interior','side','outsole'],folder:'assets/df-31/',description:'df31Description',story:'df31Story',detail:'assets/df-31/side.png',category:'homme'},
-    {id:'dfPorto',name:'DF-Porto',title:'DF-<span>Porto</span>',size:'30–35',views:['interior','side','outsole'],folder:'assets/df-porto-3035/',description:'dfPortoDescription',story:'dfPortoStory',detail:'assets/df-porto-3035/side.png',category:'junior'},
-    {id:'dfPorto2629',name:'DF-Porto (26/29)',title:'DF-<span>Porto</span>',size:'26–29',views:['interior','side','outsole'],folder:'assets/df-porto-2629/',description:'dfPorto2629Description',story:'dfPorto2629Story',detail:'assets/df-porto-2629/side.png',category:'2629'},
-    {id:'dfZalidj',name:'DF - Zalidj',title:'DF <span>- Zalidj</span>',size:'26–29',views:['interior','side','outsole'],folder:'assets/df-zalidj/',description:'dfZalidjDescription',story:'dfZalidjStory',detail:'assets/df-zalidj/side.png',category:'2629'},
-    {id:'df32',name:'DF-32',title:'DF-<span>32</span>',size:'41',views:['interior','side','outsole'],folder:'assets/df-32/',description:'df32Description',story:'df32Story',detail:'assets/df-32/side.png',category:'homme'},
-    {id:'classic',name:'DF-Classic',title:'DF-<span>Classic</span>',size:'39–40',views:['interior','side','outsole'],folder:'assets/df-classic/stitched-',description:'classicDescription',story:'classicStory',detail:'assets/df-classic/stitched-side.png',category:'homme',variants:{
-      stitched:{views:['interior','side','outsole'],folder:'assets/df-classic/stitched-',description:'classicDescription',story:'classicStory',detail:'assets/df-classic/stitched-side.png'},
+    {id:'malaga',name:'DF-Malaga',title:'DF-<span>Malaga</span>',size:'39–40',views:['outsole','interior','side','profile'],folder:'assets/',description:'malagaDescription',story:'malagaStory',detail:'assets/side.png',category:'homme'},
+    {id:'fs',name:'FS-01',title:'FS-<span>01</span>',size:'39–44',views:['outsole','interior','side'],folder:'assets/fs-01/',description:'fsDescription',story:'fsStory',detail:'assets/fs-01/side.png',category:'homme'},
+    {id:'dfVerano02',name:'DF-VERANO-02',title:'DF-<span>VERANO-02</span>',size:'43–45',views:['outsole','interior','upperInterior','side','sideUp','upperOutsole'],folder:'assets/df-verano-02/',description:'dfVerano02Description',story:'dfVerano02Story',detail:'assets/df-verano-02/side.png',category:'homme'},
+    {id:'df8406',name:'DF 84-06 Man Soulier',title:'DF <span>84-06 Man Soulier</span>',size:'41',views:['outsole','interior','side'],folder:'assets/df-8406/',description:'df8406Description',story:'df8406Story',detail:'assets/df-8406/side.png',category:'homme'},
+    {id:'df8406Caddy',name:'DF 84-6 Caddy Soulier',title:'DF <span>84-6 Caddy Soulier</span>',size:'36–37',views:['outsole','interior','side'],folder:'assets/df-8406-caddy/',description:'df8406CaddyDescription',story:'df8406CaddyStory',detail:'assets/df-8406-caddy/side.png',category:'caddie'},
+    {id:'2636',name:'DF-2636',title:'DF-<span>2636</span>',size:'37',views:['outsole','interior','side','profile'],folder:'assets/df-2636/',description:'df2636Description',story:'df2636Story',detail:'assets/df-2636/profile.png',category:'femme'},
+    {id:'2639',name:'DF-2639',title:'DF-<span>2639</span>',size:'39',views:['outsole','interior','side'],folder:'assets/df-2639/',description:'df2639Description',story:'df2639Story',detail:'assets/df-2639/side.png',category:'femme'},
+    {id:'2642',name:'DF-2642',title:'DF-<span>2642</span>',size:'38',views:['outsole','interior','side','profile'],folder:'assets/df-2642/',description:'df2642Description',story:'df2642Story',detail:'assets/df-2642/profile.png',category:'femme'},
+    {id:'df849',name:'DF84-9 Sabot',title:'DF84-<span>9 Sabot</span>',size:'38',views:['outsole','interior','side'],folder:'assets/df84-9/',description:'df849Description',story:'df849Story',detail:'assets/df84-9/side.png',category:'femme'},
+    {id:'df8611',name:'DF-8611',title:'DF-<span>8611</span>',size:'37–40',views:['outsole','interior','side'],folder:'assets/df-8611/',description:'df8611Description',story:'df8611Story',detail:'assets/df-8611/side.png',category:'femme'},
+    {id:'soulier3035',name:'Soulier 30–35',title:'Soulier <span>30–35</span>',size:'30–35',views:['outsole','interior','side'],folder:'assets/soulier-3035/',description:'soulier3035Description',story:'soulier3035Story',detail:'assets/soulier-3035/side.png',category:'junior'},
+    {id:'df31',name:'DF-31',title:'DF-<span>31</span>',size:'41',views:['outsole','interior','side'],folder:'assets/df-31/',description:'df31Description',story:'df31Story',detail:'assets/df-31/side.png',category:'homme'},
+    {id:'dfPorto',name:'DF-Porto',title:'DF-<span>Porto</span>',size:'30–35',views:['outsole','interior','side'],folder:'assets/df-porto-3035/',description:'dfPortoDescription',story:'dfPortoStory',detail:'assets/df-porto-3035/side.png',category:'junior'},
+    {id:'dfPorto2629',name:'DF-Porto (26/29)',title:'DF-<span>Porto</span>',size:'26–29',views:['outsole','interior','side'],folder:'assets/df-porto-2629/',description:'dfPorto2629Description',story:'dfPorto2629Story',detail:'assets/df-porto-2629/side.png',category:'2629'},
+    {id:'dfZalidj',name:'DF - Zalidj',title:'DF <span>- Zalidj</span>',size:'26–29',views:['outsole','interior','side'],folder:'assets/df-zalidj/',description:'dfZalidjDescription',story:'dfZalidjStory',detail:'assets/df-zalidj/side.png',category:'2629'},
+    {id:'df32',name:'DF-32',title:'DF-<span>32</span>',size:'41',views:['outsole','interior','side'],folder:'assets/df-32/',description:'df32Description',story:'df32Story',detail:'assets/df-32/side.png',category:'homme'},
+    {id:'classic',name:'DF-Classic',title:'DF-<span>Classic</span>',size:'39–40',views:['outsole','interior','side'],folder:'assets/df-classic/stitched-',description:'classicDescription',story:'classicStory',detail:'assets/df-classic/stitched-side.png',category:'homme',variants:{
+      stitched:{views:['outsole','interior','side'],folder:'assets/df-classic/stitched-',description:'classicDescription',story:'classicStory',detail:'assets/df-classic/stitched-side.png'},
       plain:{views:['interior'],folder:'assets/df-classic/plain-',description:'plainDescription',story:'plainStory',detail:null}
     }}
   ];
@@ -285,7 +306,9 @@
       card.style.setProperty('--card-index', index);
       const img = document.createElement('img'); img.src = source(view); img.alt = `${item.name} — ${t(view)}`; img.loading = 'lazy';
       const title = document.createElement('b'); title.textContent = t(view);
-      const caption = document.createElement('span'); caption.textContent = item.id==='classic' && view==='interior' ? t('classicCaption') : t('captions')[['interior','side','outsole','profile'].indexOf(view)];
+      const caption = document.createElement('span');
+      const defaultCaptionIndex = ['interior','side','outsole','profile'].indexOf(view);
+      caption.textContent = item.id==='classic' && view==='interior' ? t('classicCaption') : (defaultCaptionIndex >= 0 ? t('captions')[defaultCaptionIndex] : t(view));
       card.append(img,title,caption); card.addEventListener('click', () => selectView(index)); $('#view-cards').append(card);
     });
     $('#view-cards').style.setProperty('--view-count', item.views.length);
@@ -413,9 +436,10 @@
   // Concept.gif choreography: pinned split panel, rising foreground card,
   // expanding image, staggered text, then the next image enters from below.
   const story=$('#materials'), primary=$('.story-primary'), secondary=$('.story-secondary'), tertiary=$('.story-tertiary');
-  const intro=$('.cinematic-intro'), introLogo=$('.intro-logo-3d'), introLogoModel=$('#intro-logo-model'), introCopy=$('.intro-copy'), introFoot=$('.intro-foot'), introSky=$('.intro-sky'), introFlare=$('.intro-flare'), introWormhole=$('.intro-wormhole');
-  const SPIN_DURATION=2000;
+  const intro=$('.cinematic-intro'), introLogo=$('.intro-logo-3d'), introLogoModel=$('#intro-logo-model'), introCopy=$('.intro-copy'), introFoot=$('.intro-foot'), introSky=$('.intro-sky'), introFlare=$('.intro-flare');
+  const LOGO_REVEAL_DURATION=800, SPIN_DURATION=4000, APPROACH_DURATION=4200;
   introLogo?.style.setProperty('--intro-float-duration',`${SPIN_DURATION}ms`);
+  introLogo?.style.setProperty('--logo-advance-duration',`${APPROACH_DURATION}ms`);
   const syncIntroViewport=()=>{
     // Older mobile browsers do not keep 100vh aligned with the visible
     // viewport when the address bar expands or collapses. Pin the opening to
@@ -451,6 +475,92 @@
   };
   const clamp=value=>Math.max(0,Math.min(1,value));
   const smooth=value=>{const x=clamp(value);return x*x*(3-2*x);};
+  // Sea transitions: the logo fills with water while the opening GLB loads,
+  // a tide washes over the screen between scenes, and blocks surface through
+  // a moving waterline as they scroll into view.
+  const tide=$('.tide-curtain'), tideLoader=$('.tide-loader'), tideLoaderPct=$('.tide-loader-pct');
+  const TIDE_RISE=950, TIDE_HOLD=260, TIDE_EBB=1100;
+  tide?.style.setProperty('--tide-rise',`${TIDE_RISE}ms`);
+  tide?.style.setProperty('--tide-ebb',`${TIDE_EBB}ms`);
+  let tideRunning=false;
+  function tideWipe(onCovered){
+    if(!tide || reducedMotion.matches || tideRunning){ onCovered?.(); return; }
+    tideRunning=true;
+    document.body.classList.add('tide-surging');
+    tide.classList.remove('is-ebbing');
+    void tide.offsetWidth;
+    tide.classList.add('is-rising');
+    setTimeout(()=>{
+      try{ onCovered?.(); }
+      finally{
+        setTimeout(()=>{
+          tide.classList.replace('is-rising','is-ebbing');
+          setTimeout(()=>{
+            tide.classList.remove('is-ebbing');
+            document.body.classList.remove('tide-surging');
+            tideRunning=false;
+          },TIDE_EBB);
+        },TIDE_HOLD);
+      }
+    },TIDE_RISE);
+  }
+  let loaderProgress=0, loaderShown=0, loaderLast=0, loaderFinishing=false, loaderComplete=null, finishLoader=null;
+  const loaderStart=performance.now();
+  const paintLoader=now=>{
+    const dt=Math.min(64,now-(loaderLast||now));
+    loaderLast=now;
+    // Creep forward between progress events so a slow network still reads as motion.
+    const target=loaderFinishing?1:Math.max(loaderProgress*.94,Math.min(.6,(now-loaderStart)/9000));
+    loaderShown+=(target-loaderShown)*(1-Math.exp(-dt/(loaderFinishing?150:320)));
+    if(loaderFinishing && loaderShown>.995) loaderShown=1;
+    tideLoader.style.setProperty('--fill',loaderShown.toFixed(4));
+    tideLoaderPct.textContent=`${Math.round(loaderShown*100)}%`;
+    if(loaderShown===1) setTimeout(loaderComplete,200);
+    else requestAnimationFrame(paintLoader);
+  };
+  const finishTideLoader=()=>finishLoader||=new Promise(resolve=>{
+    if(!tideLoader || reducedMotion.matches){ tideLoader?.classList.add('is-done'); resolve(); return; }
+    loaderComplete=()=>{
+      tideLoader.classList.add('is-done');
+      // Let the 3D logo rise while the water logo dissolves.
+      setTimeout(resolve,380);
+    };
+    loaderFinishing=true;
+  });
+  if(tideLoader && !reducedMotion.matches) requestAnimationFrame(paintLoader);
+  const SEA_POINTS=32;
+  const seaClip=(width,level,phase,amp)=>{
+    const points=['0px 0px',`${width}px 0px`];
+    for(let i=SEA_POINTS;i>=0;i--){
+      const x=width*i/SEA_POINTS;
+      const y=level+Math.sin(i/SEA_POINTS*Math.PI*4+phase)*amp+Math.sin(i/SEA_POINTS*Math.PI*9-phase*1.6)*amp*.35;
+      points.push(`${x.toFixed(1)}px ${y.toFixed(1)}px`);
+    }
+    return `polygon(${points.join(',')})`;
+  };
+  function surfaceElement(el){
+    if(el.dataset.sea) return;
+    el.dataset.sea='up';
+    if(reducedMotion.matches){ el.classList.add('surfaced'); return; }
+    const start=performance.now(), duration=1250;
+    const step=now=>{
+      if(el.dataset.sea!=='up') return;
+      const t=clamp((now-start)/duration), eased=1-Math.pow(1-t,3);
+      const width=el.offsetWidth, height=el.offsetHeight;
+      const amp=Math.min(22,Math.max(8,height*.06))*(1-t*.5);
+      el.style.clipPath=seaClip(width,-amp*1.6+eased*(height+amp*3.2),now/240,amp);
+      if(t<1) requestAnimationFrame(step);
+      else{ el.style.clipPath=''; el.classList.add('surfaced'); }
+    };
+    requestAnimationFrame(step);
+  }
+  function sinkElement(el){
+    if(!el.dataset.sea) return;
+    delete el.dataset.sea;
+    el.style.clipPath='';
+    el.classList.remove('surfaced');
+  }
+  const seaDividers=$$('.sea-divider'), seaRisers=$$('.sea-rise');
   let scrollPending=false;
   let introDismissed=false;
   let introCollapseTimer=null;
@@ -470,8 +580,11 @@
       // Dismiss the model-viewer poster first, then wait for two paint frames
       // so the real canvas is visible before the spin timer starts.
       try{introLogoModel.dismissPoster?.();}catch(_){ }
-      requestAnimationFrame(()=>requestAnimationFrame(()=>markLogoReady(true)));
+      requestAnimationFrame(()=>requestAnimationFrame(()=>finishTideLoader().then(()=>markLogoReady(true))));
     },{once:true});
+    introLogoModel.addEventListener('progress',event=>{
+      loaderProgress=Math.max(loaderProgress,event.detail?.totalProgress||0);
+    });
     introLogoModel.addEventListener('error',()=>{
       // Keep waiting for the real model. The opening must not replace the
       // requested GLB with a raster logo after a decoder error.
@@ -487,7 +600,7 @@
     // A cached model may finish before the listener is attached. Check the
     // element once after setup so the first frame can still use the GLB.
     queueMicrotask(()=>{
-      try{if(introLogoModel.loaded) markLogoReady(true);} catch(_){ }
+      try{if(introLogoModel.loaded) finishTideLoader().then(()=>markLogoReady(true));} catch(_){ }
     });
   }
   // Assigned when the opening lock is installed. Keeping a no-op here lets
@@ -496,15 +609,13 @@
   function dismissOpening(){
     if(introDismissed) return;
     introDismissed=true;
-    document.body.classList.add('intro-dismissed');
     const introHeight=intro.offsetHeight;
-    introCollapseTimer=setTimeout(()=>{
+    const collapseIntro=()=>{
       if(!intro.isConnected){ unlockOpening(); return; }
       if(intro.offsetHeight===0){ unlockOpening(); return; }
       const nextScroll=Math.max(0,scrollY-introHeight);
       intro.style.height='0px';
       document.body.classList.add('intro-collapsed');
-      document.documentElement.classList.add('wormhole-travel');
       window.scrollTo({top:nextScroll,left:0,behavior:'auto'});
       // Mobile scroll anchoring can move the document again when the intro
       // collapses. Settle the landing position on the next two frames.
@@ -512,11 +623,21 @@
         window.scrollTo({top:nextScroll,left:0,behavior:'auto'});
         requestAnimationFrame(()=>window.scrollTo({top:nextScroll,left:0,behavior:'auto'}));
       });
-      requestAnimationFrame(()=>document.documentElement.classList.remove('wormhole-travel'));
-      document.body.classList.remove('wormhole-active');
+      document.body.classList.remove('logo-transition-active');
       unlockOpening();
       requestScroll();
-    },1350);
+    };
+    if(!tide || reducedMotion.matches){
+      document.body.classList.add('intro-dismissed');
+      introCollapseTimer=setTimeout(collapseIntro,1350);
+      return;
+    }
+    // The tide covers the diving logo, the intro collapses underneath, and the
+    // ebbing water uncovers the showroom.
+    tideWipe(()=>{
+      document.body.classList.add('intro-dismissed');
+      collapseIntro();
+    });
   }
   function updateScroll(){
     scrollPending=false;
@@ -546,10 +667,6 @@
       introSky.style.transform=`scale(${1+introProgress*.12}) translateY(${introProgress*3}%)`;
     }
     introFlare.style.opacity=String(smooth((introProgress-.53)/.28)*(1-smooth((introProgress-.9)/.1)));
-    const wormholeProgress=smooth((introProgress-.22)/.56)*(1-smooth((introProgress-.82)/.18));
-    introWormhole.style.opacity=String(wormholeProgress*.9);
-    introWormhole.style.transform=`translate3d(0,${introProgress*10}%,0) scale(${.34+wormholeProgress*.9}) rotate(${introProgress*95}deg)`;
-    introWormhole.classList.toggle('active',wormholeProgress>.02);
     const heroRect=$('#product').getBoundingClientRect();
     $('#product').classList.toggle('scroll-entered',heroRect.top<innerHeight*.9 && heroRect.bottom>0);
     const rect=story.getBoundingClientRect();
@@ -590,6 +707,18 @@
         block.classList.toggle('mobile-revealed',blockRect.top<innerHeight*.9 && blockRect.bottom>innerHeight*.08);
       });
     }
+    seaDividers.forEach(divider=>{
+      const seaRect=divider.getBoundingClientRect();
+      const seaProgress=clamp((innerHeight-seaRect.top)/(innerHeight+seaRect.height));
+      divider.style.setProperty('--sea-p',seaProgress.toFixed(3));
+      divider.style.setProperty('--sea-swell',(1-Math.abs(seaProgress-.5)*2).toFixed(3));
+      divider.classList.toggle('in-view',seaRect.bottom>0 && seaRect.top<innerHeight);
+    });
+    seaRisers.forEach(el=>{
+      const seaRect=el.getBoundingClientRect();
+      if(seaRect.top<innerHeight*.86 && seaRect.bottom>0) surfaceElement(el);
+      else if(seaRect.top>innerHeight) sinkElement(el);
+    });
   }
   function requestScroll(){if(!scrollPending){scrollPending=true;requestAnimationFrame(updateScroll);}}
   addEventListener('scroll',requestScroll,{passive:true});
@@ -599,8 +728,8 @@
   document.body.classList.add('motion-ready');
   requestScroll();
 
-  // Hold the opening at the top of the page until the real GLB is ready and
-  // its two-second spin has completed.
+  // Hold the opening at the top of the page until the real GLB is ready, spins,
+  // and completes its slow forward title-style transition.
   let openingTransitionStarted=false;
   const openingGuardOptions={capture:true,passive:false};
   const scrollKeys=new Set(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' ']);
@@ -628,20 +757,27 @@
   const startOpeningTransition=()=>{
     if(openingTransitionStarted || introDismissed) return;
     openingTransitionStarted=true;
-    document.body.classList.add('wormhole-active');
-    document.documentElement.classList.add('wormhole-travel');
-    introWormhole.classList.add('active');
+    introLogoModel?.removeAttribute('auto-rotate');
+    introLogo.classList.remove('logo-spin-ready');
+    introLogo.classList.add('logo-approach');
+    document.body.classList.add('logo-transition-active');
+    // With the tide, start the wave while the logo is still diving toward the
+    // camera so the water swallows it at the end of its approach.
     setTimeout(()=>{
-      document.documentElement.classList.remove('wormhole-travel');
       dismissOpening();
-    },3200);
+    },tide && !reducedMotion.matches ? Math.round(APPROACH_DURATION*.68) : APPROACH_DURATION);
   };
   beginLogoFloat=()=>{
     if(reducedMotion.matches || introDismissed || openingTransitionStarted) return;
-    introLogo.classList.add('logo-spin-ready');
+    // Let the loaded GLB settle into view before the two-second vertical-axis spin.
     setTimeout(()=>{
-      if(!introDismissed && !openingTransitionStarted) startOpeningTransition();
-    },SPIN_DURATION);
+      if(introDismissed || openingTransitionStarted) return;
+      introLogo.classList.add('logo-spin-ready');
+      introLogoModel?.setAttribute('auto-rotate','');
+      setTimeout(()=>{
+        if(!introDismissed && !openingTransitionStarted) startOpeningTransition();
+      },SPIN_DURATION);
+    },LOGO_REVEAL_DURATION);
   };
   $('.intro-skip').addEventListener('click',event=>{
     if(!document.body.classList.contains('opening-lock')) return;
@@ -654,6 +790,23 @@
     // Keep reduced-motion users from being trapped behind a static intro.
     setTimeout(()=>{ if(!introDismissed) dismissOpening(); },1600);
   }
+  // In-page links travel between sections under a passing tide.
+  document.addEventListener('click',event=>{
+    const link=event.target.closest?.('a[href^="#"]');
+    if(!link || event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if(!document.body.classList.contains('intro-collapsed') || reducedMotion.matches || tideRunning) return;
+    const target=document.getElementById(decodeURIComponent(link.hash.slice(1)));
+    if(!target || (link.closest('#materials') && target.closest('#materials'))) return;
+    event.preventDefault();
+    tideWipe(()=>{
+      const root=document.documentElement;
+      root.style.scrollBehavior='auto';
+      target.scrollIntoView({block:'start'});
+      root.style.scrollBehavior='';
+      try{history.pushState(null,'',link.hash);}catch(_){ }
+      requestScroll();
+    });
+  });
 })();
 
 

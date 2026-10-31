@@ -5,38 +5,47 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="theme-color" content="#04080d"/>
   <title>DF Shoes — Sole showroom</title>
+  <link rel="preload" href="assets/intro-ocean.jpg" as="image" fetchpriority="high"/>
   <link rel="preload" href="assets/base-basic-shaded-opening.glb?v=opening-logo-optimized-1" as="fetch" type="model/gltf-binary" crossorigin="anonymous" fetchpriority="high"/>
-  <link rel="preload" href="assets/opening-storm.png" as="image" fetchpriority="high"/>
   <link rel="modulepreload" href="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js" crossorigin="anonymous"/>
   <script type="module" src="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
-    <link rel="stylesheet" href="style.css?v=hero-atelier-bg-1"/>
+    <link rel="stylesheet" href="style.css?v=catalog-verano-1"/>
     <link rel="stylesheet" href="navbar-arabic-fix.css"/>
-  <link rel="stylesheet" href="mobile-fixes.css?v=mobile-intro-13"/>
-  <script src="app.js?v=catalog-zalidj-1" defer></script>
+  <link rel="stylesheet" href="mobile-fixes.css?v=mobile-intro-17"/>
+  <link rel="stylesheet" href="sea-transitions.css?v=sea-1"/>
+  <script src="app.js?v=sea-1" defer></script>
 </head>
 <body class="opening-active">
   <div class="noise" aria-hidden="true"></div>
   <section class="cinematic-intro" id="intro" aria-labelledby="intro-title">
     <div class="intro-stage">
       <div class="intro-sky" aria-hidden="true">
-        <img class="intro-background-photo" src="assets/opening-storm.png" alt=""/>
-        <div class="intro-stars"></div>
-        <div class="intro-cloud intro-cloud-a"></div>
-        <div class="intro-cloud intro-cloud-b"></div>
-        <div class="intro-cloud intro-cloud-c"></div>
+        <img class="intro-background-photo" src="assets/intro-ocean.jpg" alt=""/>
+        <div class="intro-water-rays"></div>
+        <div class="intro-bubbles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="intro-fish fish-image fish-a fish-betta"><img src="assets/intro-fish-betta.png" alt="" loading="lazy" decoding="async" fetchpriority="low"/></span>
+        <span class="intro-fish fish-image fish-b fish-betta fish-reverse"><img src="assets/intro-fish-betta.png" alt="" loading="lazy" decoding="async" fetchpriority="low"/></span>
+        <span class="intro-fish fish-image fish-c fish-orange"><img src="assets/intro-fish-orange.png" alt="" loading="lazy" decoding="async" fetchpriority="low"/></span>
+        <span class="intro-fish fish-image fish-d fish-orange fish-reverse"><img src="assets/intro-fish-orange.png" alt="" loading="lazy" decoding="async" fetchpriority="low"/></span>
+        <span class="intro-fish fish-image fish-e fish-blue fish-mirror"><img src="assets/intro-fish-blue.png" alt="" loading="lazy" decoding="async" fetchpriority="low"/></span>
+        <span class="intro-fish fish-image fish-f fish-blue fish-reverse"><img src="assets/intro-fish-blue.png" alt="" loading="lazy" decoding="async" fetchpriority="low"/></span>
         <div class="intro-horizon"></div>
       </div>
-      <img class="intro-thunder-motion" src="assets/thunder.gif" alt="" aria-hidden="true"/>
-      <img class="intro-thunder-gif" src="assets/thunder-lightning.png" alt="" aria-hidden="true"/>
       <div class="intro-copy">
         <p id="intro-title" data-i18n="introTitle">Crafted in motion</p>
       </div>
       <div class="intro-logo-3d" aria-label="DF Shoes">
-        <model-viewer id="intro-logo-model" data-src="assets/base-basic-shaded-opening.glb?v=opening-logo-optimized-1" alt="DF Shoes 3D logo" camera-orbit="0deg 75deg 105%" field-of-view="28deg" exposure="1.15" shadow-intensity="0.8" environment-image="neutral" interaction-prompt="none" disable-pan disable-zoom auto-rotate auto-rotate-delay="0" rotation-per-second="30deg" loading="eager" reveal="manual"></model-viewer>
+      <model-viewer id="intro-logo-model" data-src="assets/base-basic-shaded-opening.glb?v=opening-logo-optimized-1" alt="DF Shoes 3D logo" camera-orbit="0deg 75deg 105%" field-of-view="28deg" exposure="1.15" shadow-intensity="0.8" environment-image="neutral" interaction-prompt="none" disable-pan disable-zoom auto-rotate-delay="0" rotation-per-second="90deg" loading="eager" reveal="manual"></model-viewer>
+      </div>
+      <div class="tide-loader" aria-hidden="true">
+        <div class="tide-loader-logo">
+          <img class="tide-loader-ghost" src="assets/logo-final-navbar-clean.png" alt="" fetchpriority="high"/>
+          <div class="tide-loader-water"><img src="assets/logo-final-navbar-clean.png" alt=""/></div>
+        </div>
+        <div class="tide-loader-meter"><span class="tide-loader-line"><i></i></span><b class="tide-loader-pct">0%</b></div>
       </div>
       <div class="intro-foot"><span class="intro-rule"></span><span class="intro-scroll" data-i18n="introScroll">SCROLL TO ENTER</span><span class="intro-scroll-arrow" aria-hidden="true">↓</span><span class="intro-rule"></span></div>
       <a class="intro-skip" href="#product"><span data-i18n="skipIntro">Skip intro</span> <span aria-hidden="true">↘</span></a>
-      <div class="intro-wormhole" aria-hidden="true"><img src="assets/concept4.gif" alt=""/><span></span><i></i><b></b></div>
       <div class="intro-flare" aria-hidden="true"></div>
     </div>
   </section>
@@ -58,12 +67,12 @@
         <span class="sr-only" data-i18n="showCategories">عرض الفئات</span>
       </button>
       <div class="category-tabs" role="tablist" id="category-tabs" dir="auto">
-        <button type="button" data-category="all" role="tab" aria-label="All categories" aria-pressed="true"><span>All categories</span><small>14</small></button>
-        <button type="button" data-category="homme" role="tab" aria-label="L'homme" aria-pressed="false"><span>L'homme</span><small>05</small></button>
+        <button type="button" data-category="all" role="tab" aria-label="All categories" aria-pressed="true"><span>All categories</span><small>17</small></button>
+        <button type="button" data-category="homme" role="tab" aria-label="L'homme" aria-pressed="false"><span>L'homme</span><small>07</small></button>
         <button type="button" data-category="femme" role="tab" aria-label="La Femme" aria-pressed="false"><span>La Femme</span><small>05</small></button>
         <button type="button" data-category="junior" role="tab" aria-label="30/35" aria-pressed="false"><span>30/35</span><small>02</small></button>
         <button type="button" data-category="2629" role="tab" aria-label="26/29" aria-pressed="false"><span>26/29</span><small>02</small></button>
-        <button type="button" data-category="caddie" role="tab" aria-label="Caddie" aria-pressed="false"><span>Caddie</span><small>00</small></button>
+        <button type="button" data-category="caddie" role="tab" aria-label="Caddie" aria-pressed="false"><span>Caddie</span><small>01</small></button>
       </div>
     </section>
     <section class="hero" id="product">
@@ -71,7 +80,7 @@
         <p class="eyebrow" data-i18n="collection">مجموعة نعال DF SHOES</p>
         <div class="model-switcher" role="group" aria-label="اختيار الموديل">
           <button id="model-prev" type="button" data-label="previousModel">←</button>
-          <label class="model-list-label"><span data-i18n="model">الموديل</span><select id="model-select" aria-label="Model"></select></label><span class="model-counter"><b id="model-counter" dir="ltr">01 / 14</b></span>
+          <label class="model-list-label"><span data-i18n="model">الموديل</span><select id="model-select" aria-label="Model"></select></label><span class="model-counter"><b id="model-counter" dir="ltr">01 / 17</b></span>
           <button id="model-next" type="button" data-label="nextModel">→</button>
         </div>
         <h1 id="model-title" dir="ltr">DF-<span>Malaga</span></h1>
@@ -84,7 +93,7 @@
         <div class="specs">
           <div><b id="size-range" dir="ltr">39–40</b><small data-i18n="sizeRange">المقاسات</small></div>
           <div><b id="photo-count">04</b><small data-i18n="photoViews">زوايا العرض</small></div>
-          <div><b id="model-count" dir="ltr">14</b><small data-i18n="models">الموديلات</small></div>
+          <div><b id="model-count" dir="ltr">17</b><small data-i18n="models">الموديلات</small></div>
         </div>
         <p id="model-announcement" class="sr-only" aria-live="polite"></p>
       </div>
@@ -118,12 +127,14 @@
       <p id="empty-message" data-i18n="emptyCategory">لا توجد موديلات مرتبطة بهذه الفئة حالياً.</p>
     </section>
     <section class="gallery" id="gallery">
-      <div class="section-head"><h2 data-i18n="productViews">زوايا المنتج</h2><span id="gallery-counter" dir="ltr">01 — 04</span></div>
-      <div class="cards" id="view-cards"></div>
+      <div class="sea-divider" aria-hidden="true"><i></i><i></i><i></i><b></b><b></b><b></b><b></b><b></b><b></b></div>
+      <div class="section-head sea-rise"><h2 data-i18n="productViews">زوايا المنتج</h2><span id="gallery-counter" dir="ltr">01 — 04</span></div>
+      <div class="cards sea-rise" id="view-cards"></div>
+      <div class="sea-divider sea-divider-story" aria-hidden="true"><i></i><i></i><i></i><b></b><b></b><b></b><b></b><b></b><b></b></div>
       <section class="scroll-story" id="materials" aria-label="دراسة التصميم">
         <div class="story-pin">
           <div class="story-ambient" aria-hidden="true"></div>
-          <div class="story-frame">
+          <div class="story-frame sea-rise">
             <div class="story-brand"><span aria-hidden="true">◇</span> <b class="story-model" dir="ltr">DF-Malaga</b><span class="story-step" dir="ltr">01 / 03</span></div>
             <div class="story-copy">
               <article class="story-chapter" data-chapter="0"><p class="eyebrow" data-i18n="productViews"></p><h2 data-i18n="storyTitle0"></h2><p id="story-body-0"></p><a class="story-link" href="#materials-mid"><span data-i18n="scrollExplore"></span><span aria-hidden="true">↓</span></a></article>
@@ -142,7 +153,8 @@
       </section>
     </section>
   </main>
-  <footer>
+  <div class="sea-divider sea-divider-footer" aria-hidden="true"><i></i><i></i><i></i><b></b><b></b><b></b><b></b><b></b><b></b></div>
+  <footer class="sea-rise">
     <span dir="ltr">© DF SHOES 2026</span>
     <span data-i18n="footer">تصميم النعال من DF SHOES</span>
     <address class="footer-address">
@@ -154,5 +166,10 @@
     </a>
     <a href="#product" data-i18n="backTop">العودة إلى الأعلى ↑</a>
   </footer>
+  <div class="tide-curtain" aria-hidden="true">
+    <div class="tide-crest tide-crest-top"><i></i><i></i><i></i></div>
+    <div class="tide-depth"><div class="tide-bubbles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="tide-crest tide-crest-bottom"><i></i><i></i><i></i></div>
+  </div>
 </body>
 </html>
