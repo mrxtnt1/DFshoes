@@ -483,9 +483,22 @@
   tide?.style.setProperty('--tide-rise',`${TIDE_RISE}ms`);
   tide?.style.setProperty('--tide-ebb',`${TIDE_EBB}ms`);
   let tideRunning=false;
+  const tideGuardOptions={capture:true,passive:false};
+  const tideScrollKeys=new Set(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' ']);
+  const blockTideInput=event=>{
+    if(event.type==='keydown' && !tideScrollKeys.has(event.key)) return;
+    event.preventDefault();
+  };
+  // Hold the page still under the water so the landing position is exact.
+  const lockTide=locked=>{
+    document.documentElement.classList.toggle('tide-lock',locked);
+    const method=locked?'addEventListener':'removeEventListener';
+    ['wheel','touchmove','keydown'].forEach(type=>window[method](type,blockTideInput,tideGuardOptions));
+  };
   function tideWipe(onCovered){
     if(!tide || reducedMotion.matches || tideRunning){ onCovered?.(); return; }
     tideRunning=true;
+    lockTide(true);
     document.body.classList.add('tide-surging');
     tide.classList.remove('is-ebbing');
     void tide.offsetWidth;
@@ -495,6 +508,7 @@
       finally{
         setTimeout(()=>{
           tide.classList.replace('is-rising','is-ebbing');
+          lockTide(false);
           setTimeout(()=>{
             tide.classList.remove('is-ebbing');
             document.body.classList.remove('tide-surging');
@@ -522,8 +536,8 @@
     if(!tideLoader || reducedMotion.matches){ tideLoader?.classList.add('is-done'); resolve(); return; }
     loaderComplete=()=>{
       tideLoader.classList.add('is-done');
-      // Let the 3D logo rise while the water logo dissolves.
-      setTimeout(resolve,380);
+      // Reveal the 3D logo as the water line fades out.
+      setTimeout(resolve,250);
     };
     loaderFinishing=true;
   });
@@ -542,7 +556,8 @@
     if(el.dataset.sea) return;
     el.dataset.sea='up';
     if(reducedMotion.matches){ el.classList.add('surfaced'); return; }
-    const start=performance.now(), duration=1250;
+    // Under a passing tide, wait for the water to start ebbing before surfacing.
+    const start=performance.now()+(tideRunning?TIDE_HOLD+300:0), duration=1250;
     const step=now=>{
       if(el.dataset.sea!=='up') return;
       const t=clamp((now-start)/duration), eased=1-Math.pow(1-t,3);
@@ -561,6 +576,22 @@
     el.classList.remove('surfaced');
   }
   const seaDividers=$$('.sea-divider'), seaRisers=$$('.sea-rise');
+  // Scrolling down into these sections sends the tide over the page and lands
+  // the visitor at the top of the next section.
+  const seaGates=['#gallery','#materials'].map(selector=>({target:$(selector),lastTop:undefined})).filter(gate=>gate.target);
+  let lastSeaScroll=scrollY;
+  function travelUnderTide(target,hash){
+    tideWipe(()=>{
+      const root=document.documentElement;
+      root.style.scrollBehavior='auto';
+      target.scrollIntoView({block:'start'});
+      root.style.scrollBehavior='';
+      if(hash){ try{history.pushState(null,'',hash);}catch(_){ } }
+      seaGates.forEach(gate=>{gate.lastTop=gate.target.getBoundingClientRect().top;});
+      lastSeaScroll=scrollY;
+      requestScroll();
+    });
+  }
   let scrollPending=false;
   let introDismissed=false;
   let introCollapseTimer=null;
@@ -714,6 +745,16 @@
       divider.style.setProperty('--sea-swell',(1-Math.abs(seaProgress-.5)*2).toFixed(3));
       divider.classList.toggle('in-view',seaRect.bottom>0 && seaRect.top<innerHeight);
     });
+    const scrollingDown=scrollY>lastSeaScroll;
+    lastSeaScroll=scrollY;
+    const gateLine=innerHeight*.72;
+    const canTravel=!tideRunning && !reducedMotion.matches && document.body.classList.contains('intro-collapsed');
+    seaGates.forEach(gate=>{
+      const gateTop=gate.target.getBoundingClientRect().top;
+      const crossed=gate.lastTop!==undefined && gate.lastTop>=gateLine && gateTop<gateLine && gateTop>-innerHeight*.5;
+      gate.lastTop=gateTop;
+      if(canTravel && scrollingDown && crossed && gate.target.offsetHeight) travelUnderTide(gate.target);
+    });
     seaRisers.forEach(el=>{
       const seaRect=el.getBoundingClientRect();
       if(seaRect.top<innerHeight*.86 && seaRect.bottom>0) surfaceElement(el);
@@ -798,14 +839,7 @@
     const target=document.getElementById(decodeURIComponent(link.hash.slice(1)));
     if(!target || (link.closest('#materials') && target.closest('#materials'))) return;
     event.preventDefault();
-    tideWipe(()=>{
-      const root=document.documentElement;
-      root.style.scrollBehavior='auto';
-      target.scrollIntoView({block:'start'});
-      root.style.scrollBehavior='';
-      try{history.pushState(null,'',link.hash);}catch(_){ }
-      requestScroll();
-    });
+    travelUnderTide(target,link.hash);
   });
 })();
 

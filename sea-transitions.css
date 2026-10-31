@@ -1,33 +1,19 @@
-/* Sea transitions: a water-filled dolphin preloader, a tide that washes over
-   the screen between scenes, wave dividers between sections, and blocks that
-   surface through a moving waterline as they scroll into view. */
+/* Sea transitions: a slim water-line loader under the 3D logo, a tide that
+   washes over the screen between scenes, wave dividers between sections, and
+   blocks that surface through a moving waterline as they scroll into view. */
 :root{
   --tide-crest:150px;
   --tide-top:#0a4a68;
   --tide-bottom:#03121f;
-  --sea-wave-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 14' preserveAspectRatio='none'%3E%3Cpath d='M0 7C27.5 0 82.5 0 110 7S192.5 14 220 7V14H0Z'/%3E%3C/svg%3E");
 }
 
-/* ---------- Preloader: the logo fills with sea water ---------- */
-.tide-loader{position:absolute;inset:0;z-index:6;display:grid;place-content:center;justify-items:center;gap:26px;pointer-events:none;--fill:0;transition:opacity .75s ease,transform .9s cubic-bezier(.2,.8,.2,1),filter .75s ease,visibility 0s linear .9s}
-.tide-loader-logo{position:relative;width:clamp(150px,19vw,230px);aspect-ratio:854/721;animation:tideBob 3.2s ease-in-out infinite}
-.tide-loader-logo img{position:absolute;left:0;bottom:0;display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
-.tide-loader-ghost{opacity:.3;filter:grayscale(1) brightness(.55) drop-shadow(0 0 1px #8fdcff55)}
-.tide-loader-water{position:absolute;left:0;right:0;bottom:0;height:calc(var(--fill) * 100% + 14px);overflow:hidden;
-  -webkit-mask:var(--sea-wave-mask) 0 0/220px 14px repeat-x,linear-gradient(#000,#000) 0 14px/100% 100% no-repeat;
-  mask:var(--sea-wave-mask) 0 0/220px 14px repeat-x,linear-gradient(#000,#000) 0 14px/100% 100% no-repeat;
-  animation:tideMaskDrift 1.5s linear infinite}
-.tide-loader-water img{filter:drop-shadow(0 0 18px #2ab8ff66) saturate(1.15)}
+/* ---------- Preloader: a slim water line while the 3D logo loads ---------- */
+.tide-loader{position:absolute;inset:0;z-index:6;display:grid;place-content:center;justify-items:center;pointer-events:none;--fill:0;transition:opacity .6s ease,visibility 0s linear .6s}
 .tide-loader-meter{display:flex;align-items:center;gap:14px;color:#9fdcf0;direction:ltr}
-.tide-loader-line{position:relative;width:clamp(110px,14vw,170px);height:2px;border-radius:2px;background:#9fe7ff1f;overflow:hidden}
+.tide-loader-line{position:relative;width:clamp(120px,16vw,190px);height:2px;border-radius:2px;background:#9fe7ff1f;overflow:hidden}
 .tide-loader-line i{position:absolute;inset:0;transform-origin:left center;transform:scaleX(var(--fill));background:linear-gradient(90deg,#1e8fd0,#7ee7ff);box-shadow:0 0 10px #43d9ff}
 .tide-loader-pct{min-width:4ch;font-size:11px;font-weight:500;letter-spacing:.24em;font-variant-numeric:tabular-nums;text-shadow:0 0 12px #43d9ff88}
-.tide-loader.is-done{opacity:0;visibility:hidden;transform:scale(1.12) translateY(-14px);filter:blur(6px)}
-@keyframes tideMaskDrift{
-  from{-webkit-mask-position:0 0,0 14px;mask-position:0 0,0 14px}
-  to{-webkit-mask-position:220px 0,0 14px;mask-position:220px 0,0 14px}
-}
-@keyframes tideBob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-7px) rotate(1deg)}}
+.tide-loader.is-done{opacity:0;visibility:hidden}
 
 /* ---------- Tide curtain: a wave that washes over the whole screen ---------- */
 .tide-curtain{position:fixed;left:0;right:0;top:calc(var(--tide-crest) * -1);height:calc(100vh + var(--tide-crest) * 2);z-index:1000;display:flex;flex-direction:column;pointer-events:none;visibility:hidden;transform:translate3d(0,calc(100vh + var(--tide-crest)),0);will-change:transform}
@@ -98,11 +84,11 @@ body.tide-surging.motion-ready #product .showcase{transition-delay:.72s}
 
 /* ---------- Blocks surface through a waterline (clip set from app.js) ---------- */
 body.motion-ready .sea-rise:not(.surfaced){clip-path:inset(0 0 100% 0)}
+/* Freeze scrolling while a scroll-triggered tide carries the page to the next section. */
+html.tide-lock,html.tide-lock body{overflow:hidden!important;overscroll-behavior:none}
 
 @media(max-width:700px){
   :root{--tide-crest:90px}
-  .tide-loader{gap:20px}
-  .tide-loader-logo{width:min(46vw,190px)}
   .sea-divider{height:72px}
   .sea-divider i:nth-child(1){background-size:750px 62%}
   .sea-divider i:nth-child(2){background-size:500px 76%}
@@ -112,7 +98,7 @@ body.motion-ready .sea-rise:not(.surfaced){clip-path:inset(0 0 100% 0)}
 }
 @media(prefers-reduced-motion:reduce){
   .tide-loader,.tide-curtain{display:none}
-  .sea-divider i,.sea-divider b,.tide-loader-logo,.tide-loader-water{animation:none}
+  .sea-divider i,.sea-divider b{animation:none}
   .sea-divider b{display:none}
   body.motion-ready .sea-rise:not(.surfaced){clip-path:none}
 }
