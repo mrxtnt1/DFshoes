@@ -91,6 +91,35 @@ body.tide-surging.motion-ready #product .showcase{transition-delay:.72s}
 body.motion-ready .sea-rise:not(.surfaced){clip-path:inset(0 0 100% 0)}
 /* Freeze scrolling while a scroll-triggered tide carries the page to the next section. */
 html.tide-lock,html.tide-lock body{overflow:hidden!important;overscroll-behavior:none}
+/* Keep the scrollbar's space while locked so the layout (and the landing spot) doesn't shift. */
+html.tide-lock{scrollbar-gutter:stable}
+
+/* ---------- Ripple: the quick splash between the hero and the gallery ---------- */
+@property --ripple-fill{syntax:'<length>';inherits:true;initial-value:0px}
+@property --ripple-hole{syntax:'<length>';inherits:true;initial-value:0px}
+.sea-ripple{position:fixed;inset:0;z-index:1000;pointer-events:none;visibility:hidden;
+  --ripple-x:50%;--ripple-y:100%;--ripple-fill:0px;--ripple-hole:0px;
+  background:
+    repeating-radial-gradient(circle at var(--ripple-x) var(--ripple-y),rgba(160,225,250,0) 0 46px,rgba(160,225,250,.07) 50px,rgba(160,225,250,0) 56px),
+    radial-gradient(ellipse 70% 55% at 50% 45%,rgba(64,170,214,.42),rgba(64,170,214,0) 70%),
+    linear-gradient(180deg,var(--tide-top),var(--tide-bottom));
+  -webkit-mask-image:radial-gradient(circle at var(--ripple-x) var(--ripple-y),#000 calc(var(--ripple-fill) - 1px),transparent var(--ripple-fill)),radial-gradient(circle at 50% 50%,transparent calc(var(--ripple-hole) - 1px),#000 var(--ripple-hole));
+  mask-image:radial-gradient(circle at var(--ripple-x) var(--ripple-y),#000 calc(var(--ripple-fill) - 1px),transparent var(--ripple-fill)),radial-gradient(circle at 50% 50%,transparent calc(var(--ripple-hole) - 1px),#000 var(--ripple-hole));
+  -webkit-mask-composite:source-in,source-over;mask-composite:intersect,add}
+.sea-ripple.is-active{visibility:visible}
+.sea-ripple.from-top{--ripple-y:0%}
+/* Foam on the leading edge of the splash, then on the rim of the opening. */
+.sea-ripple::before,.sea-ripple::after{content:"";position:absolute;inset:0}
+.sea-ripple::before{background:radial-gradient(circle at var(--ripple-x) var(--ripple-y),rgba(205,242,255,0) calc(var(--ripple-fill) - 46px),rgba(205,242,255,.22) calc(var(--ripple-fill) - 14px),rgba(235,250,255,.9) calc(var(--ripple-fill) - 2px),rgba(235,250,255,0) var(--ripple-fill))}
+.sea-ripple::after{opacity:0;background:radial-gradient(circle at 50% 50%,rgba(235,250,255,.95) var(--ripple-hole),rgba(170,228,250,.35) calc(var(--ripple-hole) + 10px),rgba(170,228,250,0) calc(var(--ripple-hole) + 44px))}
+.sea-ripple.is-opening::after{opacity:1}
+body.ripple-surging.motion-ready #product{transition-delay:.12s}
+body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(1){transition-delay:.18s}
+body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(2){transition-delay:.22s}
+body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(3){transition-delay:.26s}
+body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(4){transition-delay:.3s}
+body.ripple-surging.motion-ready #product .hero-copy>*:nth-child(5){transition-delay:.34s}
+body.ripple-surging.motion-ready #product .showcase{transition-delay:.24s}
 
 @media(max-width:700px){
   :root{--tide-crest:90px}
@@ -102,7 +131,7 @@ html.tide-lock,html.tide-lock body{overflow:hidden!important;overscroll-behavior
   .sea-divider-story{margin-top:24px;margin-bottom:-12px}
 }
 @media(prefers-reduced-motion:reduce){
-  .tide-loader,.tide-curtain{display:none}
+  .tide-loader,.tide-curtain,.sea-ripple{display:none}
   .sea-divider i,.sea-divider b{animation:none}
   .sea-divider b{display:none}
   body.motion-ready .sea-rise:not(.surfaced){clip-path:none}

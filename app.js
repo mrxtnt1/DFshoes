@@ -495,8 +495,9 @@
     const method=locked?'addEventListener':'removeEventListener';
     ['wheel','touchmove','keydown'].forEach(type=>window[method](type,blockTideInput,tideGuardOptions));
   };
-  // fromTop sends the water down from above, for travel back up the page.
-  function tideWipe(onCovered,fromTop=false){
+  // fromTop sends the water down from above, for travel back up the page;
+  // settle runs again just before the water clears, to re-pin the landing.
+  function tideWipe(onCovered,fromTop=false,settle){
     if(!tide || reducedMotion.matches || tideRunning){ onCovered?.(); return; }
     tideRunning=true;
     lockTide(true);
@@ -509,8 +510,9 @@
       try{ onCovered?.(); }
       finally{
         setTimeout(()=>{
-          tide.classList.replace('is-rising','is-ebbing');
           lockTide(false);
+          settle?.();
+          tide.classList.replace('is-rising','is-ebbing');
           setTimeout(()=>{
             tide.classList.remove('is-ebbing');
             document.body.classList.remove('tide-surging');
@@ -519,6 +521,42 @@
         },TIDE_HOLD);
       }
     },TIDE_RISE);
+  }
+  // The hero and the gallery are close neighbours, so travel between them is a
+  // quick splash instead: water bursts out from the edge you scroll toward,
+  // the page jumps underneath, and a foam ring opens from the centre.
+  const ripple=$('.sea-ripple');
+  const RIPPLE_IN=330, RIPPLE_HOLD=60, RIPPLE_OUT=420;
+  const canRipple=!!(ripple && window.CSS?.registerProperty && CSS.supports('mask-composite','intersect') && ripple.animate);
+  function rippleWipe(onCovered,fromTop=false,settle){
+    if(!canRipple){ tideWipe(onCovered,fromTop,settle); return; }
+    if(reducedMotion.matches || tideRunning){ onCovered?.(); return; }
+    tideRunning=true;
+    lockTide(true);
+    document.body.classList.add('ripple-surging');
+    const fill=Math.ceil(Math.hypot(innerWidth/2,innerHeight))+2;
+    const hole=Math.ceil(Math.hypot(innerWidth/2,innerHeight/2))+48;
+    ripple.classList.toggle('from-top',fromTop);
+    ripple.classList.remove('is-opening');
+    ripple.classList.add('is-active');
+    const splash=ripple.animate({'--ripple-fill':['0px',`${fill}px`]},{duration:RIPPLE_IN,easing:'cubic-bezier(.45,0,.2,1)',fill:'forwards'});
+    const finish=()=>{
+      ripple.classList.remove('is-active','is-opening');
+      ripple.getAnimations().forEach(anim=>anim.cancel());
+      document.body.classList.remove('ripple-surging');
+      tideRunning=false;
+    };
+    splash.finished.then(()=>{
+      try{ onCovered?.(); }
+      finally{
+        setTimeout(()=>{
+          lockTide(false);
+          settle?.();
+          ripple.classList.add('is-opening');
+          ripple.animate({'--ripple-hole':['0px',`${hole}px`]},{duration:RIPPLE_OUT,easing:'cubic-bezier(.2,.65,.25,1)',fill:'forwards'}).finished.then(finish,finish);
+        },RIPPLE_HOLD);
+      }
+    },finish);
   }
   let loaderProgress=0, loaderShown=0, loaderLast=0, loaderFinishing=false, loaderComplete=null, finishLoader=null;
   const loaderStart=performance.now();
@@ -559,7 +597,7 @@
     el.dataset.sea='up';
     if(reducedMotion.matches){ el.classList.add('surfaced'); return; }
     // Under a passing tide, wait for the water to start ebbing before surfacing.
-    const start=performance.now()+(tideRunning?TIDE_HOLD+300:0), duration=1250;
+    const start=performance.now()+(tideRunning?(document.body.classList.contains('ripple-surging')?RIPPLE_HOLD+120:TIDE_HOLD+300):0), duration=1250;
     const step=now=>{
       if(el.dataset.sea!=='up') return;
       const t=clamp((now-start)/duration), eased=1-Math.pow(1-t,3);
@@ -582,22 +620,26 @@
   // at that section's top; scrolling back up out of it lands at the top of the
   // section before (`back`, or the top of the page when there is none).
   const seaGates=[
-    {target:$('#gallery'),back:null},
+    {target:$('#gallery'),back:null,quick:true},
     {target:$('#materials'),back:$('#gallery')}
   ].filter(gate=>gate.target).map(gate=>({...gate,lastTop:undefined}));
   let lastSeaScroll=scrollY;
-  function travelUnderTide(target,hash,fromTop=false){
-    tideWipe(()=>{
-      const root=document.documentElement;
-      root.style.scrollBehavior='auto';
-      if(target) target.scrollIntoView({block:'start'});
-      else window.scrollTo(0,0);
-      root.style.scrollBehavior='';
-      if(hash){ try{history.pushState(null,'',hash);}catch(_){ } }
+  function travelUnderTide(target,hash,fromTop=false,quick=false){
+    // An instant jump also cancels any wheel or touch momentum still running,
+    // which could otherwise carry the page off its landing spot.
+    // Measured from layout offsets, so entrance transforms can't skew it.
+    const layoutTop=el=>{let top=0;for(;el;el=el.offsetParent) top+=el.offsetTop;return top;};
+    const land=()=>{
+      const top=target?Math.max(0,Math.round(layoutTop(target)-(parseFloat(getComputedStyle(target).scrollMarginTop)||0))):0;
+      if(Math.abs(scrollY-top)>1) window.scrollTo({top,behavior:'instant'});
       seaGates.forEach(gate=>{gate.lastTop=gate.target.getBoundingClientRect().top;});
       lastSeaScroll=scrollY;
+    };
+    (quick?rippleWipe:tideWipe)(()=>{
+      land();
+      if(hash){ try{history.pushState(null,'',hash);}catch(_){ } }
       requestScroll();
-    },fromTop);
+    },fromTop,land);
   }
   let scrollPending=false;
   let introDismissed=false;
@@ -762,8 +804,8 @@
       const gateTop=gate.target.getBoundingClientRect().top, lastTop=gate.lastTop;
       gate.lastTop=gateTop;
       if(!canTravel || lastTop===undefined || !gate.target.offsetHeight) return;
-      if(scrollingDown && lastTop>=downLine && gateTop<downLine && gateTop>-innerHeight*.5) travelUnderTide(gate.target);
-      else if(scrollingUp && lastTop<=upLine && gateTop>upLine && gateTop<innerHeight*1.2) travelUnderTide(gate.back,null,true);
+      if(scrollingDown && lastTop>=downLine && gateTop<downLine && gateTop>-innerHeight*.5) travelUnderTide(gate.target,null,false,gate.quick);
+      else if(scrollingUp && lastTop<=upLine && gateTop>upLine && gateTop<innerHeight*1.2) travelUnderTide(gate.back,null,true,gate.quick);
     });
     seaRisers.forEach(el=>{
       const seaRect=el.getBoundingClientRect();
@@ -841,7 +883,8 @@
     // Keep reduced-motion users from being trapped behind a static intro.
     setTimeout(()=>{ if(!introDismissed) dismissOpening(); },1600);
   }
-  // In-page links travel between sections under a passing tide.
+  // In-page links travel between sections under a passing tide, or the quick
+  // splash when heading for the hero or the gallery.
   document.addEventListener('click',event=>{
     const link=event.target.closest?.('a[href^="#"]');
     if(!link || event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -849,7 +892,7 @@
     const target=document.getElementById(decodeURIComponent(link.hash.slice(1)));
     if(!target || (link.closest('#materials') && target.closest('#materials'))) return;
     event.preventDefault();
-    travelUnderTide(target,link.hash,target.getBoundingClientRect().top<0);
+    travelUnderTide(target,link.hash,target.getBoundingClientRect().top<0,target.id==='product' || target.id==='gallery');
   });
 })();
 
