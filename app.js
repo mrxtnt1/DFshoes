@@ -522,9 +522,10 @@
       }
     },TIDE_RISE);
   }
-  // The hero and the gallery are close neighbours, so travel between them is a
-  // quick splash instead: water bursts out from the edge you scroll toward,
-  // the page jumps underneath, and a foam ring opens from the centre.
+  // Travel between the page's sections is a quick splash rather than the full
+  // tide (which stays for the opening): water bursts out from the edge you
+  // scroll toward, the page jumps underneath, and a foam ring opens from the
+  // centre.
   const ripple=$('.sea-ripple');
   const RIPPLE_IN=330, RIPPLE_HOLD=60, RIPPLE_OUT=420;
   const canRipple=!!(ripple && window.CSS?.registerProperty && CSS.supports('mask-composite','intersect') && ripple.animate);
@@ -621,7 +622,7 @@
   // section before (`back`, or the top of the page when there is none).
   const seaGates=[
     {target:$('#gallery'),back:null,quick:true},
-    {target:$('#materials'),back:$('#gallery')}
+    {target:$('#materials'),back:$('#gallery'),quick:true}
   ].filter(gate=>gate.target).map(gate=>({...gate,lastTop:undefined}));
   let lastSeaScroll=scrollY;
   function travelUnderTide(target,hash,fromTop=false,quick=false){
