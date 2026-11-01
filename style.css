@@ -59,7 +59,6 @@ html[dir="rtl"] .hero h1{text-align:right}
 .viewer-wrap[data-view="outsole"] .hero-product,.viewer-wrap[data-view="profile"] .hero-product{transform:none}
 .viewer-wrap[data-model="fs"] .hero-product{transform:none}
 .viewer-wrap[data-model="fs"][data-view="interior"] .product-float{top:1%;height:73%;left:1%;right:1%}
-.viewer-wrap[data-model="fs"][data-view="outsole"] .product-float{top:8%;height:66%;left:1%;right:1%}
 .viewer-wrap[data-model="fs"][data-view="side"] .product-float{top:15%;height:60%}
 .cards{grid-template-columns:repeat(var(--view-count,4),minmax(0,1fr))}
 .card{text-align:start;opacity:0;translate:0 48px;transition:translate .75s cubic-bezier(.2,.7,.2,1),opacity .75s, border-color .25s;transition-delay:calc(var(--card-index,0)*75ms);font:inherit;color:inherit}

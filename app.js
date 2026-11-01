@@ -476,7 +476,7 @@
   const clamp=value=>Math.max(0,Math.min(1,value));
   const smooth=value=>{const x=clamp(value);return x*x*(3-2*x);};
   // Sea transitions: the logo fills with water while the opening GLB loads,
-  // a tide washes over the screen between scenes, and blocks surface through
+  // a tide washes over the screen as the opening ends, and blocks surface through
   // a moving waterline as they scroll into view.
   const tide=$('.tide-curtain'), tideLoader=$('.tide-loader'), tideLoaderPct=$('.tide-loader-pct');
   const TIDE_RISE=950, TIDE_HOLD=260, TIDE_EBB=1100;
@@ -495,15 +495,12 @@
     const method=locked?'addEventListener':'removeEventListener';
     ['wheel','touchmove','keydown'].forEach(type=>window[method](type,blockTideInput,tideGuardOptions));
   };
-  // fromTop sends the water down from above, for travel back up the page;
-  // settle runs again just before the water clears, to re-pin the landing.
-  function tideWipe(onCovered,fromTop=false,settle){
+  function tideWipe(onCovered){
     if(!tide || reducedMotion.matches || tideRunning){ onCovered?.(); return; }
     tideRunning=true;
     lockTide(true);
     document.body.classList.add('tide-surging');
     tide.classList.remove('is-ebbing');
-    tide.classList.toggle('from-top',fromTop);
     void tide.offsetWidth;
     tide.classList.add('is-rising');
     setTimeout(()=>{
@@ -511,7 +508,6 @@
       finally{
         setTimeout(()=>{
           lockTide(false);
-          settle?.();
           tide.classList.replace('is-rising','is-ebbing');
           setTimeout(()=>{
             tide.classList.remove('is-ebbing');
@@ -521,45 +517,6 @@
         },TIDE_HOLD);
       }
     },TIDE_RISE);
-  }
-  // Travel between the page's sections is a quick splash rather than the full
-  // tide (which stays for the opening): water bursts out from the edge you
-  // scroll toward, the page jumps underneath, and a foam ring opens from the
-  // centre.
-  const ripple=$('.sea-ripple');
-  // A touch slower on phones, where the splash fills a small screen in a blink.
-  const rippleTiming=()=>innerWidth<=700?{rise:460,hold:90,open:560}:{rise:330,hold:60,open:420};
-  const canRipple=!!(ripple && window.CSS?.registerProperty && CSS.supports('mask-composite','intersect') && ripple.animate);
-  function rippleWipe(onCovered,fromTop=false,settle){
-    if(!canRipple){ tideWipe(onCovered,fromTop,settle); return; }
-    if(reducedMotion.matches || tideRunning){ onCovered?.(); return; }
-    tideRunning=true;
-    lockTide(true);
-    document.body.classList.add('ripple-surging');
-    const fill=Math.ceil(Math.hypot(innerWidth/2,innerHeight))+2;
-    const hole=Math.ceil(Math.hypot(innerWidth/2,innerHeight/2))+48;
-    ripple.classList.toggle('from-top',fromTop);
-    ripple.classList.remove('is-opening');
-    ripple.classList.add('is-active');
-    const timing=rippleTiming();
-    const splash=ripple.animate({'--ripple-fill':['0px',`${fill}px`]},{duration:timing.rise,easing:'cubic-bezier(.45,0,.2,1)',fill:'forwards'});
-    const finish=()=>{
-      ripple.classList.remove('is-active','is-opening');
-      ripple.getAnimations().forEach(anim=>anim.cancel());
-      document.body.classList.remove('ripple-surging');
-      tideRunning=false;
-    };
-    splash.finished.then(()=>{
-      try{ onCovered?.(); }
-      finally{
-        setTimeout(()=>{
-          lockTide(false);
-          settle?.();
-          ripple.classList.add('is-opening');
-          ripple.animate({'--ripple-hole':['0px',`${hole}px`]},{duration:timing.open,easing:'cubic-bezier(.2,.65,.25,1)',fill:'forwards'}).finished.then(finish,finish);
-        },timing.hold);
-      }
-    },finish);
   }
   let loaderProgress=0, loaderShown=0, loaderLast=0, loaderFinishing=false, loaderComplete=null, finishLoader=null;
   const loaderStart=performance.now();
@@ -600,7 +557,7 @@
     el.dataset.sea='up';
     if(reducedMotion.matches){ el.classList.add('surfaced'); return; }
     // Under a passing tide, wait for the water to start ebbing before surfacing.
-    const start=performance.now()+(tideRunning?(document.body.classList.contains('ripple-surging')?rippleTiming().hold+120:TIDE_HOLD+300):0), duration=1250;
+    const start=performance.now()+(tideRunning?TIDE_HOLD+300:0), duration=1250;
     const step=now=>{
       if(el.dataset.sea!=='up') return;
       const t=clamp((now-start)/duration), eased=1-Math.pow(1-t,3);
@@ -619,30 +576,6 @@
     el.classList.remove('surfaced');
   }
   const seaDividers=$$('.sea-divider'), seaRisers=$$('.sea-rise');
-  // Scrolling down into a gate's section sends a splash over the page and
-  // lands at that section's top; scrolling back up out of it lands at the top
-  // of the section before (`back`). The hero and the gallery scroll freely.
-  const seaGates=[
-    {target:$('#materials'),back:$('#gallery'),quick:true}
-  ].filter(gate=>gate.target).map(gate=>({...gate,lastTop:undefined}));
-  let lastSeaScroll=scrollY;
-  // Measured from layout offsets, so entrance transforms can't skew it.
-  const layoutTop=el=>{let top=0;for(;el;el=el.offsetParent) top+=el.offsetTop;return top;};
-  function travelUnderTide(target,hash,fromTop=false,quick=false){
-    // An instant jump also cancels any wheel or touch momentum still running,
-    // which could otherwise carry the page off its landing spot.
-    const land=()=>{
-      const top=target?Math.max(0,Math.round(layoutTop(target)-(parseFloat(getComputedStyle(target).scrollMarginTop)||0))):0;
-      if(Math.abs(scrollY-top)>1) window.scrollTo({top,behavior:'instant'});
-      seaGates.forEach(gate=>{gate.lastTop=gate.target.getBoundingClientRect().top;});
-      lastSeaScroll=scrollY;
-    };
-    (quick?rippleWipe:tideWipe)(()=>{
-      land();
-      if(hash){ try{history.pushState(null,'',hash);}catch(_){ } }
-      requestScroll();
-    },fromTop,land);
-  }
   let scrollPending=false;
   let introDismissed=false;
   let introCollapseTimer=null;
@@ -796,19 +729,6 @@
       divider.style.setProperty('--sea-swell',(1-Math.abs(seaProgress-.5)*2).toFixed(3));
       divider.classList.toggle('in-view',seaRect.bottom>0 && seaRect.top<innerHeight);
     });
-    const scrollingDown=scrollY>lastSeaScroll, scrollingUp=scrollY<lastSeaScroll;
-    lastSeaScroll=scrollY;
-    // Down: the section's top rises past 60% of the screen. Up: it drops back
-    // below 28%, meaning the previous section is filling the view again.
-    const downLine=innerHeight*.6, upLine=innerHeight*.28;
-    const canTravel=!tideRunning && !reducedMotion.matches && document.body.classList.contains('intro-collapsed');
-    seaGates.forEach(gate=>{
-      const gateTop=gate.target.getBoundingClientRect().top, lastTop=gate.lastTop;
-      gate.lastTop=gateTop;
-      if(!canTravel || lastTop===undefined || !gate.target.offsetHeight) return;
-      if(scrollingDown && lastTop>=downLine && gateTop<downLine && gateTop>-innerHeight*.5) travelUnderTide(gate.target,null,false,gate.quick);
-      else if(scrollingUp && lastTop<=upLine && gateTop>upLine && gateTop<innerHeight*1.2) travelUnderTide(gate.back,null,true,gate.quick);
-    });
     seaRisers.forEach(el=>{
       const seaRect=el.getBoundingClientRect();
       if(seaRect.top<innerHeight*.86 && seaRect.bottom>0) surfaceElement(el);
@@ -885,17 +805,6 @@
     // Keep reduced-motion users from being trapped behind a static intro.
     setTimeout(()=>{ if(!introDismissed) dismissOpening(); },1600);
   }
-  // In-page links travel between sections under a passing splash; links to
-  // the hero and the gallery just scroll there.
-  document.addEventListener('click',event=>{
-    const link=event.target.closest?.('a[href^="#"]');
-    if(!link || event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    if(!document.body.classList.contains('intro-collapsed') || reducedMotion.matches || tideRunning) return;
-    const target=document.getElementById(decodeURIComponent(link.hash.slice(1)));
-    if(!target || target.id==='product' || target.id==='gallery' || (link.closest('#materials') && target.closest('#materials'))) return;
-    event.preventDefault();
-    travelUnderTide(target,link.hash,target.getBoundingClientRect().top<0,true);
-  });
 })();
 
 
