@@ -810,7 +810,7 @@ html[dir="rtl"] .category-tabs button[aria-pressed="true"]:before{left:auto;righ
   }
 
   #model-title .title-ocean text{
-    font-size:clamp(64px,25vw,148px);
+    font-size:144px;
   }
 
   .viewer-wrap{
@@ -872,7 +872,7 @@ html[dir="rtl"] .category-tabs button[aria-pressed="true"]:before{left:auto;righ
   }
 
   #model-title .title-ocean text{
-    font-size:clamp(58px,24vw,112px);
+    font-size:144px;
   }
 
   .model-switcher{
@@ -940,4 +940,17 @@ html[dir="rtl"] .category-tabs button[aria-pressed="true"]:before{left:auto;righ
     padding:8px 10px;
     font-size:8px;
   }
+}
+
+/* Tablets: give the reference name room. Portrait tablets stack the hero like
+   smaller screens so the name spans the width; landscape ones widen the copy column. */
+@media(min-width:801px) and (max-width:1099px) and (orientation:portrait){
+  .hero{grid-template-columns:minmax(0,1fr);column-gap:0}
+  .showcase{width:100%;max-width:640px;margin:auto}
+  .viewer-wrap{height:auto}
+  .hero-copy{padding-top:35px}
+  #model-title{max-width:720px}
+}
+@media(min-width:801px) and (max-width:1099px) and (orientation:landscape){
+  .hero{grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr)}
 }
