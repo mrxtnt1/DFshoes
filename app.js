@@ -746,7 +746,9 @@
     });
     seaRisers.forEach(el=>{
       const seaRect=el.getBoundingClientRect();
-      if(seaRect.top<innerHeight*.86 && seaRect.bottom>0) surfaceElement(el);
+      // Also surface anything already fully on screen, which a short block at the
+      // end of the page may be without its top ever reaching the 86% line.
+      if((seaRect.top<innerHeight*.86 || seaRect.bottom<=innerHeight) && seaRect.bottom>0) surfaceElement(el);
       else if(seaRect.top>innerHeight) sinkElement(el);
     });
   }
