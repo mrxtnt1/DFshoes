@@ -7,12 +7,22 @@
   --tide-bottom:#03121f;
 }
 
-/* ---------- Preloader: a slim water line while the 3D logo loads ---------- */
-.tide-loader{position:absolute;inset:0;z-index:6;display:grid;place-content:center;justify-items:center;pointer-events:none;--fill:0;transition:opacity .6s ease,visibility 0s linear .6s}
-.tide-loader-meter{display:flex;align-items:center;gap:14px;color:#9fdcf0;direction:ltr}
-.tide-loader-line{position:relative;width:clamp(120px,16vw,190px);height:2px;border-radius:2px;background:#9fe7ff1f;overflow:hidden}
-.tide-loader-line i{position:absolute;inset:0;transform-origin:left center;transform:scaleX(var(--fill));background:linear-gradient(90deg,#1e8fd0,#7ee7ff);box-shadow:0 0 10px #43d9ff}
-.tide-loader-pct{min-width:4ch;font-size:11px;font-weight:500;letter-spacing:.24em;font-variant-numeric:tabular-nums;text-shadow:0 0 12px #43d9ff88}
+/* ---------- Preloader: a water-line meter low in the frame while the 3D logo loads ---------- */
+.tide-loader{position:absolute;left:0;right:0;bottom:calc(8% + 64px);z-index:6;display:flex;justify-content:center;pointer-events:none;--fill:0;transition:opacity .6s ease,visibility 0s linear .6s}
+.tide-loader-meter{display:grid;justify-items:center;gap:16px;direction:ltr;font-family:'Unbounded','Tajawal',sans-serif;color:#bfefff}
+.tide-loader-pct{position:relative;display:block;font-size:clamp(46px,6.4vw,84px);font-weight:600;line-height:.9;letter-spacing:-.02em;background:linear-gradient(180deg,#f2fdff 10%,#7ee7ff 58%,#2b8fe0);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px #43d9ff59)}
+.tide-loader-num{font-variant-numeric:tabular-nums}
+/* The number stays centred over the bar; the % sign hangs off its right edge. */
+.tide-loader-pct small{position:absolute;left:100%;top:.2em;margin-left:.08em;font-size:.38em;font-weight:400;color:#8fe3ff}
+.tide-loader-line{position:relative;width:clamp(220px,36vw,440px);height:6px;border-radius:6px;background:#9fe7ff17;box-shadow:inset 0 0 0 1px #9fe7ff2b}
+.tide-loader-line i{position:absolute;inset:0;overflow:hidden;border-radius:inherit;transform-origin:left center;transform:scaleX(var(--fill));background:linear-gradient(90deg,#1565c0,#1e9fe0 45%,#7ee7ff);box-shadow:0 0 14px #43d9ffaa}
+.tide-loader-line i:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,#ffffff70 50%,transparent 70%);background-size:200% 100%;animation:tideShimmer 1.6s linear infinite}
+/* A bright bead rides the water's edge. */
+.tide-loader-line:after{content:"";position:absolute;top:50%;left:calc(var(--fill) * 100%);width:14px;height:14px;border-radius:50%;background:#e9fbff;box-shadow:0 0 12px 3px #43d9ff,0 0 26px 8px #43d9ff55;transform:translate(-50%,-50%)}
+.tide-loader-label{font-size:clamp(10px,.9vw,12px);font-weight:400;letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;color:#8fcfe4}
+/* Arabic letters join, so no tracking there. */
+html[lang="ar"] .tide-loader-label{font-size:clamp(13px,1.1vw,15px);letter-spacing:0;padding-left:0}
+@keyframes tideShimmer{from{background-position:150% 0}to{background-position:-50% 0}}
 .tide-loader.is-done{opacity:0;visibility:hidden}
 
 /* ---------- Tide curtain: a wave that washes over the whole screen ---------- */
@@ -97,11 +107,17 @@ body.motion-ready #product .showcase,
 
 @media(max-width:700px){
   :root{--tide-crest:90px}
+  .tide-loader{bottom:calc(9% + 56px)}
+  .tide-loader-meter{gap:13px}
   .sea-divider{height:72px}
   .sea-divider i:nth-child(1){background-size:750px 62%}
   .sea-divider i:nth-child(2){background-size:500px 76%}
   .sea-divider i:nth-child(3){background-size:600px 100%}
   .sea-divider-story{margin-top:24px;margin-bottom:-12px}
+}
+@media(max-height:650px) and (min-width:701px){
+  .tide-loader{bottom:calc(5% + 48px)}
+  .tide-loader-pct{font-size:clamp(40px,5vw,60px)}
 }
 @media(prefers-reduced-motion:reduce){
   .tide-loader,.tide-curtain{display:none}

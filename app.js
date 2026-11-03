@@ -4,7 +4,7 @@
   const $$ = selector => [...document.querySelectorAll(selector)];
   const dictionary = {
     ar: {
-      introTitle:'مصممة لتتحرك',introScroll:'مرّر للدخول',skipIntro:'تجاوز المقدمة',
+      introTitle:'مصممة لتتحرك',introScroll:'مرّر للدخول',loaderLabel:'جارٍ التحميل',skipIntro:'تجاوز المقدمة',
       product:'المنتج', gallery:'المعرض', language:'اللغة', collection:'مجموعة نعال DF SHOES', model:'الموديل', models:'الموديلات', sizeRange:'المقاسات', photoViews:'زوايا العرض', reachUs:'كيفية الوصول إلينا', hqAddress:'المقر الرئيسي: المدية، الجزائر', categoryNavigation:'التنقل حسب الفئة', allCategories:'كل الفئات', showCategories:'عرض الفئات', hideCategories:'إخفاء الفئات', categoryHomme:'الرجال', categoryFemme:'النساء', category3035:'30/35', category2629:'26/29',categoryCaddie:'كادي', emptyCategory:'لا توجد موديلات مرتبطة بهذه الفئة حالياً.',
       interior:'الداخل', side:'الجانب', outsole:'النعل الخارجي', profile:'المظهر الجانبي', upperInterior:'الداخل العلوي', sideUp:'الجانب العلوي', upperOutsole:'السطح العلوي', color:'اللون',viewAngle:'زاوية العرض', productViews:'زوايا المنتج', materialStudy:'دراسة التصميم',
       swipe:'اسحب لتغيير زاوية العرض', previousModel:'الموديل السابق', nextModel:'الموديل التالي', previousView:'الزاوية السابقة', nextView:'الزاوية التالية', free3d:'عرض ثلاثي الأبعاد حر', rotate3d:'اسحب للتدوير', viewerLabel:'صور النعل. استخدم السهمين أو اسحب لتغيير زاوية العرض.', photoControls:'اختيار زاوية العرض',
@@ -16,7 +16,7 @@
       fsStory:['بنية داخلية بيضاء بخلايا سداسية وعلامات ظاهرة داخل القالب. هذه صور موديل FS-01 الفعلية.','تُظهر الصورة الجانبية ارتفاع الحافة ونقشتها الدقيقة، مع بروز البنية الداخلية فوق قاع النعل.','خلايا سداسية بارزة بتفاصيل منقّطة تملأ السطح الخارجي حول مساحة مركزية تحمل علامة المقاس.']
     },
     fr: {
-      introTitle:'Pensée en mouvement',introScroll:'DÉFILEZ POUR ENTRER',skipIntro:'Passer l’intro',
+      introTitle:'Pensée en mouvement',introScroll:'DÉFILEZ POUR ENTRER',loaderLabel:'Chargement',skipIntro:'Passer l’intro',
       product:'Produit',gallery:'Galerie',language:'Langue',collection:'COLLECTION DE SEMELLES DF SHOES',model:'Modèle',models:'Modèles',sizeRange:'Pointures',photoViews:'Vues',reachUs:'Comment nous rejoindre',hqAddress:'Siège : Médéa, Algérie',categoryNavigation:'Navigation par catégorie',allCategories:'Toutes les catégories',showCategories:'Afficher les catégories',hideCategories:'Masquer les catégories',categoryHomme:"L'homme",categoryFemme:'La Femme',category3035:'30/35',category2629:'26/29',categoryCaddie:'Caddie',emptyCategory:'Aucun modèle n’est actuellement associé à cette catégorie.',interior:'Intérieur',side:'Côté',outsole:'Dessous',profile:'Profil',color:'COULEUR',viewAngle:'ANGLE DE VUE',productViews:'Vues du produit',materialStudy:'Étude du design',swipe:'GLISSEZ POUR CHANGER DE VUE',previousModel:'Modèle précédent',nextModel:'Modèle suivant',previousView:'Vue précédente',nextView:'Vue suivante',free3d:'Vue 3D libre',rotate3d:'Faites glisser pour tourner',viewerLabel:'Photos de la semelle. Glissez ou utilisez les flèches pour changer de vue.',photoControls:'Choisir une vue',
       storyTitle0:'Chaque angle,\nun nouveau détail.',storyTitle1:'La forme suit\nla fonction.',storyTitle2:'Le détail vient\nd’en dessous.',scrollExplore:'Défilez pour explorer',backProduct:'Retour au produit',backTop:'Retour en haut ↑',footer:'SEMELLES SIGNÉES DF SHOES',captions:['Structure alvéolaire','Bord de la semelle','Motif de la semelle','Silhouette latérale'],upperInterior:'Intérieur supérieur',sideUp:'Côté supérieur',upperOutsole:'Dessus extérieur',
       malagaDescription:'Explorez DF-Malaga : une structure alvéolaire, un bord sculpté et un dessous finement texturé. Découvrez les photographies originales sous chaque angle.',
@@ -25,7 +25,7 @@
       fsStory:['Une structure blanche à cellules hexagonales et des inscriptions moulées visibles : les photographies du modèle FS-01.','La vue latérale révèle la hauteur du bord, sa texture fine et les cloisons intérieures au-dessus de la base.','Des hexagones en relief aux centres pointillés recouvrent le dessous autour de la zone centrale indiquant la pointure.']
     },
     en: {
-      introTitle:'Crafted in motion',introScroll:'SCROLL TO ENTER',skipIntro:'Skip intro',
+      introTitle:'Crafted in motion',introScroll:'SCROLL TO ENTER',loaderLabel:'Loading',skipIntro:'Skip intro',
       product:'Product',gallery:'Gallery',language:'Language',collection:'DF SHOES SOLE COLLECTION',model:'Model',models:'Models',sizeRange:'Size range',photoViews:'Photo views',reachUs:'How to reach us',hqAddress:'Factory HQ · Médéa, Algeria',categoryNavigation:'Browse by category',allCategories:'All categories',showCategories:'Show categories',hideCategories:'Hide categories',categoryHomme:'Men',categoryFemme:'Women',category3035:'30/35',category2629:'26/29',categoryCaddie:'Caddie',emptyCategory:'No models are currently assigned to this category.',interior:'Interior',side:'Side',outsole:'Outsole',profile:'Profile',color:'COLOR',viewAngle:'VIEW ANGLE',productViews:'Product Views',materialStudy:'Material Study',swipe:'SWIPE TO CHANGE VIEW',previousModel:'Previous model',nextModel:'Next model',previousView:'Previous view',nextView:'Next view',free3d:'Free 3D view',rotate3d:'Drag to rotate',viewerLabel:'Sole photographs. Swipe or use arrow keys to change view.',photoControls:'Choose product view',
       storyTitle0:'Every angle.\nAnother detail.',storyTitle1:'Form follows\nfunction.',storyTitle2:'Detail from\nthe ground up.',scrollExplore:'Scroll to explore',backProduct:'Back to product',backTop:'Back to top ↑',footer:'SOLE DESIGN BY DF SHOES',captions:['Honeycomb structure','Sole edge','Outsole pattern','Side silhouette'],upperInterior:'Upper interior',sideUp:'Side up',upperOutsole:'Upper outsole',
       malagaDescription:'Explore DF-Malaga: a honeycomb interior, sculpted edge and finely patterned outsole. Discover the original product photographs from every side.',
@@ -242,22 +242,37 @@
     $('#model-title').innerHTML=`<span class="sr-only">${name}</span><span class="title-mobile" aria-hidden="true"></span><svg class="title-ocean" viewBox="0 0 800 160" aria-hidden="true" focusable="false">
       <defs>
         <linearGradient id="title-sea"><stop stop-color="#f1fcff"/><stop offset=".48" stop-color="#61ddff"/><stop offset="1" stop-color="#397bef"/></linearGradient>
-        <clipPath id="title-letters"><text x="8" y="126" textLength="780" lengthAdjust="spacingAndGlyphs">${name}</text></clipPath>
+        <clipPath id="title-letters"><text x="8" y="126">${name}</text></clipPath>
         <linearGradient id="dolphin-water"><stop stop-color="#0754c9"/><stop offset=".6" stop-color="#3be4ff"/><stop offset="1" stop-color="#eeffff"/></linearGradient>
       </defs>
-      <text x="8" y="126" textLength="780" lengthAdjust="spacingAndGlyphs" fill="url(#title-sea)">${name}</text>
+      <text x="8" y="126" fill="url(#title-sea)">${name}</text>
       <g clip-path="url(#title-letters)"><g class="surfing-dolphin">
         
         <path d="M0 87 C40 43 88 47 116 66 L145 70 L119 80 C104 105 77 109 52 98 L33 126 L38 94 C22 90 9 90 0 87 L-29 103 L-17 80 L-37 62 Z M57 59 L72 29 L83 57 Z" fill="url(#dolphin-water)"/>
         <circle cx="108" cy="70" r="3" fill="#062654"/>
       </g></g>
     </svg>`;
-    // iPhone Safari does not consistently honor SVG textLength on long
-    // product names. Keep a real text fallback available for the phone
-    // layout so Soulier 30–35 never loses the end of its title.
     const mobileTitle=$('#model-title .title-mobile');
     if(mobileTitle) mobileTitle.textContent=name;
+    fitTitle();
   }
+  // Stretch or squeeze the name to the full 780-unit width with a measured
+  // scale rather than SVG textLength, which iPhone Safari doesn't reliably
+  // honor; long names like Soulier 30–35 would otherwise lose their end.
+  function fitTitle() {
+    const texts=$$('#model-title .title-ocean text');
+    if(!texts.length) return;
+    texts.forEach(text=>text.removeAttribute('transform'));
+    const natural=texts[texts.length-1].getComputedTextLength();
+    if(!natural) return;
+    const scale=(780/natural).toFixed(4);
+    texts.forEach(text=>text.setAttribute('transform',`translate(8 0) scale(${scale} 1) translate(-8 0)`));
+  }
+  // The scale depends on the loaded font and on the size each screen width uses.
+  document.fonts?.ready.then(fitTitle);
+  document.fonts?.addEventListener?.('loadingdone',fitTitle);
+  let titleFitFrame=0;
+  addEventListener('resize',()=>{ cancelAnimationFrame(titleFitFrame); titleFitFrame=requestAnimationFrame(fitTitle); },{passive:true});
   function renderModel(animate = true) {
     const available = filteredModels();
     if(!available.length) return;
@@ -478,7 +493,7 @@
   // Sea transitions: the logo fills with water while the opening GLB loads,
   // a tide washes over the screen as the opening ends, and blocks surface through
   // a moving waterline as they scroll into view.
-  const tide=$('.tide-curtain'), tideLoader=$('.tide-loader'), tideLoaderPct=$('.tide-loader-pct');
+  const tide=$('.tide-curtain'), tideLoader=$('.tide-loader'), tideLoaderNum=$('.tide-loader-num');
   const TIDE_RISE=950, TIDE_HOLD=260, TIDE_EBB=1100;
   tide?.style.setProperty('--tide-rise',`${TIDE_RISE}ms`);
   tide?.style.setProperty('--tide-ebb',`${TIDE_EBB}ms`);
@@ -528,7 +543,7 @@
     loaderShown+=(target-loaderShown)*(1-Math.exp(-dt/(loaderFinishing?150:320)));
     if(loaderFinishing && loaderShown>.995) loaderShown=1;
     tideLoader.style.setProperty('--fill',loaderShown.toFixed(4));
-    tideLoaderPct.textContent=`${Math.round(loaderShown*100)}%`;
+    tideLoaderNum.textContent=Math.round(loaderShown*100);
     if(loaderShown===1) setTimeout(loaderComplete,200);
     else requestAnimationFrame(paintLoader);
   };
